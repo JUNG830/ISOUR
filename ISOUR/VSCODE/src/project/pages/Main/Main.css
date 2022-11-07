@@ -1,0 +1,124 @@
+.Main-container {
+    display: flex;
+    height: 1650px;
+    align-items: center;
+    display: block;
+    box-sizing: border-box;
+    border:0px solid;
+    justify-content: space-between;
+    overflow-x: hidden;
+  }
+
+  .Main-container1 {
+    height: 600px;
+    display: block;
+    box-sizing: border-box;
+    border:0px solid;
+    background-color:rgb(251, 253, 145)
+  }
+
+  .Main-container2 {
+    height: 600px;
+    display: block;
+    box-sizing: border-box;
+    border:0px solid;
+    background-color:#29335c;
+  }
+
+  .Main-box1 {
+    position: relative;
+    left: 42.5rem;
+    top: 3rem;
+    border-radius: 100px;
+    background-color: #29335c;
+    background-color: rgba(76, 76, 76, 0.7);
+    overflow: hidden;
+    animation: fadein 2.5s ease-in-out;
+    width: 35rem;
+  }
+
+  .Main-font {
+    position: relative;
+    left: 128px;
+    font-size: 60px;
+    color: white;
+    font-weight: bold;
+  }
+
+  .Main-box-font2 {
+    position: relative;
+    left: 33.5rem;
+    top: 14rem;
+    font-size: 40px;
+    color:#29335c;
+    font-weight: bold;
+    overflow: hidden;
+    animation: fadein 2.5s ease-in-out;
+  }
+
+  .Main-box2 {
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    bottom: 100px;
+  }
+
+  .Main-box2-font1 {
+    position: relative;
+    left:45rem;
+    top:1rem ;
+    font-size: 350px;
+    font-family: 'Times New Roman', Times, serif;
+    color:white;
+    overflow: hidden;
+    animation: fadein 5.0s ease-in-out;
+    font-weight: bold;
+    width: 500px;
+  }
+
+  .Main-box2-font2 {
+    position: relative;
+    top: -5px;
+  }
+  
+  .Main-box2-font3 {
+    top:5px;
+  }
+
+  .Main-box3 {
+    position: relative;
+    text-align: center;
+    top: 13rem;
+    font-size: 40px;
+    color:black;
+    font-weight: bold;
+  }  
+
+  .Main-box-button2 {
+    position: relative;
+    top: 20rem;
+    left: 50rem;
+    width: 300px;
+    border-radius: 100px;
+    color: white;
+    font-size: large;
+    background: black;
+    padding: 1rem;
+    cursor: pointer;
+  }
+
+
+
+  @keyframes fadein {
+    0%{
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+
