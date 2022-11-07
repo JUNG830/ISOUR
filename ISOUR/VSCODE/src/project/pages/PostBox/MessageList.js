@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import imgHome from '../../images/home_button.png'
 import '../../CSS/Style_Login.css';
-import SignUpModal from './SignUpModal';
+import SignUpModal from './SignUpModal'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const MessageList = () => {
@@ -65,7 +65,7 @@ const MessageList = () => {
       setLoading(true);
       try {
         const response = await TeamAPI.messageStorage(localId);
-        console.log("\n\nlocalId : " + localId);
+        console.log("응답 메시지 : " + response);
         setMessageList(response.data);
         // console.log("response.data : " + response.data);
 
@@ -106,9 +106,9 @@ const MessageList = () => {
     
     if(inputMessage !== "") {
       const messageReg = await TeamAPI.messageReg(localId, receiverId, inputMessage);
-      console.log("\n\nlocalId : " + localId);
-      console.log("받는 사람(receiverId) : " + receiverId);
-      console.log("inputMessage : " + inputMessage);
+      console.log("\n\nlocalId : " + messageReg);
+      console.log("받는 사람(receiverId) : " + messageReg.receiverId);
+      console.log("inputMessage : " + messageReg.inputMessage);
       alert("쪽지 보내기 완료!")
 
     } else {
@@ -166,6 +166,7 @@ const MessageList = () => {
         
         <MemberListBlock>
           <MemberList>
+            {localId}
             <MemberTitle>받은 쪽지함</MemberTitle>
             <button onClick={onClickSendMessage}>{receiverId}</button>
             <button onClick={onClickDelete}>삭제하기</button>

@@ -51,6 +51,11 @@ const MyPage = () => {
     // alert("콘솔 확인하세요.")
     window.location.replace("/Exam");
   }
+  const onClickMessage = () => {
+    console.log("메세지함 버튼 눌렀어요.");
+    // alert("콘솔 확인하세요.")
+    window.location.replace("/MessageList");
+  }
 
 // 파일 업로드 관련 코드
 //   const formElem = document.querySelector('form');
@@ -157,6 +162,10 @@ const MyPage = () => {
             </div>
             : ''}
           </div>))}
+          <div onClick={onClickMessage}>
+              <img src={nowGo} alt="화살표" />
+              <span>메세지 함</span>
+            </div>
           <div onClick={onClickDrop}>
               <img src={nowGo} alt="화살표" />
               <span>탈퇴하기</span>

@@ -85,6 +85,14 @@ const TeamAPI = {
 
     return await axios.post(TEAM_DOMAIN + "MemberCheck", regCheck, HEADER);
   },
+  // 쪽지함 불러오기
+  messageStorage: async function(id) {
+    const regCmd = {
+      cmd : "ShowMessage",
+      id : id
+    }
+    return await axios.post(TEAM_DOMAIN + "PostboxServlet", regCmd, HEADER);
+  },
 
   // 이미지 파일 업로드
   UploadService: async function(formData) {
