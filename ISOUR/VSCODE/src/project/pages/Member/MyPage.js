@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const MyPage = () => {
   const isLogin = window.localStorage.getItem("isLogin");
-  const DOMAIN = 'http://localhost:8111/ISOUR/MemberInfo/file/';
+  const DOMAIN = 'http://localhost:8111/ISOUR/mypage/file/';
   if(isLogin === "FALSE") window.location.replace("/");
 
   const localId = window.localStorage.getItem("userId");

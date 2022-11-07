@@ -43,8 +43,11 @@ public class UploadService extends HttpServlet{
 	// 학원 버전 경로
 //	private static final String UPLOAD_DIR = "D:\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp";
 	
-	// 집 버전
-	private static final String UPLOAD_DIR = "F:\\KH\\TOTAL-1\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADIMG";
+	// 혜경님 버전
+	private static final String UPLOAD_DIR = "D:\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADIMG";
+			
+	// 우 집 버전
+//	private static final String UPLOAD_DIR = "F:\\KH\\TOTAL-1\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADIMG";
 	
 	public UploadService() {
 		

@@ -44,19 +44,19 @@ public class MemberServlet extends HttpServlet {
 		
 		
 		// TeamAPI.js 에 작성해둔 cmd : "MemberInfo" 를 가져온다.
-		String reqCmd = (String)jsonObj.get("cmd");
+//		String reqCmd = (String)jsonObj.get("cmd");
 		String reqId = (String)jsonObj.get("id");
 		System.out.println("전달 받은 ID : " + reqId);
 		
 		PrintWriter out = response.getWriter();
 		
 		// TeamAPI.js 에 작성해둔 cmd : "MemberInfo" 가 아니라면 실행될 if문
-		if(!reqCmd.equals("MemberInfo")) {
-			JSONObject resJson = new JSONObject();
-			resJson.put("result", "TeamAPI.js에 cmd 확인 필요");
-			out.print(resJson);
-			return;
-		}
+//		if(!reqCmd.equals("admin")) {
+//			JSONObject resJson = new JSONObject();
+//			resJson.put("result", "TeamAPI.js에 cmd 확인 필요");
+//			out.print(resJson);
+//			return;
+//		}
 		
 		MemberDAO dao = new MemberDAO();
 		List<MemberVO> list = dao.memberSelect(reqId);
@@ -65,6 +65,7 @@ public class MemberServlet extends HttpServlet {
 		
 		for(MemberVO e : list) {
 			JSONObject memberInfo = new JSONObject();
+			memberInfo.put("fileName", e.getFileName());
 			memberInfo.put("name", e.getName());
 			memberInfo.put("id", e.getId());
 			memberInfo.put("pwd", e.getPwd());
