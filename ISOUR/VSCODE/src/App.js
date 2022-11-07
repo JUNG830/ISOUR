@@ -1,14 +1,20 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Main from './project/pages/Main';
 import Login from './project/Login/Login';
-import Home from './project/HOME/Home';
 import MyPage from './project/pages/MyPage';
-import MemberInfo from './project/pages/MemberInfo';
+import AdminMemberInfo from './project/pages/Member/AdminMemberInfo';
 import MemberDrop from './project/pages/MemberDrop';
 import SignUp from './project/SingUp/SignUp';
 import QuizApp from './project/pages/QuizApp';
-import Pg1 from './project/pages/FreeTest/pg1';
+// import Pg1 from './project/pages/FreeTest/pg1';
 import Navbar2 from './project/Navbar/Navbar2';
+import FileUpload from './project/FileUpload/FileUpload';
+import FileUpload2 from './project/FileUpload/FileUpload2';
+import MemberUpdate from './project/pages/MemberUpdate';
+import Boarding from './project/pages/Boarding';
+import Exam from './project/pages/Exam/Exam';
+import MbtiTypes from './project/pages/MBTIType/MbtiTypes';
+
 
 
 function App() {
@@ -19,12 +25,14 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
-        <Route path='/home' element={<Home />} />
         <Route path='/mypage' element={<MyPage />} />
-        <Route path='/MemberInfo' element={<MemberInfo />} />
+        <Route path='/AdminMemberInfo' element={<AdminMemberInfo />} />
         <Route path='/MemberDrop' element={<MemberDrop />} />
-        <Route path='/QuizApp' element={<QuizApp />} />
-        <Route path='/pg' element={<Pg1 />} />
+        <Route path='/Exam' element={<Exam />} />
+        <Route path='/FileUpload' element={<FileUpload2 />} />
+        <Route path='/MemberUpdate' element={<MemberUpdate />} />
+        <Route path='/Boarding' element={<Boarding />} />
+        <Route path='/MbtiTypes' element={<MbtiTypes />} />
       </Routes>
     </Router>
   );

@@ -12,8 +12,8 @@ import org.json.simple.JSONObject;
 import com.ISOUR.Common.Common;
 import com.ISOUR.DAO.MemberDAO;
 
-@WebServlet("/MemberRegServlet")
-public class MemberRegServlet extends HttpServlet {
+@WebServlet("/MemberUpdateServlet")
+public class MemberUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,13 +47,15 @@ public class MemberRegServlet extends HttpServlet {
 		String getRegion2 = (String)jsonObj.get("region2");
 		
 		
+		
+		
 		MemberDAO dao = new MemberDAO();
-		boolean rstComplete = dao.memberRegister(getName, getId, getPwd, getBirth, getAge, getGender, getRegion1, getRegion2);
+		boolean rstComplete = dao.memberUpdate(getName, getId, getPwd, getBirth, getAge, getGender, getRegion1, getRegion2);
 		
 		PrintWriter out = response.getWriter();
 		JSONObject resJson = new JSONObject();
 		
-//		System.out.println("여기까지 와라....Reg");
+//		System.out.println("여기는 Update");
 		
 		if(rstComplete) resJson.put("result", "OK");
 		else resJson.put("result", "NOK");

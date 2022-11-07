@@ -5,8 +5,13 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import imgHome from '../images/home_button.png'
 import '../CSS/Style_Login.css';
+import noImage from '../images/no_image.gif';
 
-const MemberInfo = () => {
+
+const AdminMemberInfo = () => {
+  const localId = window.localStorage.getItem("userId");
+  const DOMAIN = 'http://localhost:8111/ISOUR/MemberInfo/file/';
+
   const [memberInfo, setMemberInfo] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -29,7 +34,7 @@ const MemberInfo = () => {
     margin: 0 auto;
     font-size: 1.125em;
     @media screen and (max-width: 768px) {
-      witdh: 100%;
+      width: 100%;
     }
     th, td {
       border:1px solid #ccc;
@@ -49,7 +54,7 @@ const MemberInfo = () => {
     const memberData = async () => {
       setLoading(true);
       try {
-        const response = await TeamAPI.memberInfo("ALL");
+        const response = await TeamAPI.memberInfo(localId);
         setMemberInfo(response.data);
         console.log(response.data)
       } catch (e) {
@@ -69,7 +74,11 @@ const MemberInfo = () => {
       <MemberListBlock>
         <MemberList>
           <MemberTitle>회원 정보</MemberTitle>
+          {/* F:\KH\TOTAL-1\ISOUR_HJ\ISOUR\Eclipse\src\main\webapp\UPLOADIMG\admin.jpg */}
+          {/* <img src={ require('F:/KH/TOTAL-1/ISOUR_HJ/ISOUR/Eclipse/src/main/webapp/UPLOADIMG/admin.jpg').default } width='80px' height='100px'/> */}
+          {/* <img src={aaa} width='80px' height='100px' /> */}
           <tr>
+            <th>사진(IMAGE)</th>
             <th>이름(NAME)</th>
             <th>아이디(ID)</th>
             <th>비밀번호(PASSWORD)</th>
@@ -80,8 +89,22 @@ const MemberInfo = () => {
             <th>시/구/군(REGION2)</th>
             <th>MBTI</th>
           </tr>
-          {memberInfo && memberInfo.map(member => (
+          {memberInfo && memberInfo.map(member => (  //  npm i babel-eslint -D  설치
             <tr key={member.name}>
+              
+              {/* <td><p style={{background={member.fileName}}} /></td> */}
+              {/* <td><p style={{background: 'url({member.fileName})'}} width='80px' height='100px'/></td> */}
+              {/* <td><img style={{background: 'url({member.fileName})'}} width='80px' height='100px'/></td> */}
+              {/* <td><img src='/MemberInfo/file/admin.jpg' width='80px' height='100px'/></td> */}
+              {/* <td><img src={ require({member.fileName}).default } width='80px' height='100px' alt='엑박'/></td> */}
+              {/* <td>{member.fileName}</td> */}
+              {/* <td><div style={{backgroundImage: 'url("{member.fileName}")', width:'80px', height:'100px' }} /></td> */}
+              <td>
+                  { member.fileName ?  
+                    <img src={`${DOMAIN}` + `${member.fileName}`} width='80px' height='100px'/>
+                    : <img src={noImage} width='80px' height='100px' />
+                  }
+              </td>
               <td>{member.name}</td>
               <td>{member.id}</td>
               <td>{member.pwd}</td>
@@ -94,7 +117,7 @@ const MemberInfo = () => {
             </tr>
           ))}
         </MemberList>
-        <Link to="/home" className="link-box">
+        <Link to="/" className="link-box">
           <img className="link-img" src={imgHome} alt="HOME" />
         <p>HOME으로 이동</p>
         </Link>
@@ -102,4 +125,4 @@ const MemberInfo = () => {
     </div>
   );
 }
-export default MemberInfo;
+export default AdminMemberInfo;

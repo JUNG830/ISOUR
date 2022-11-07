@@ -3,6 +3,7 @@ package com.ISOUR.VO;
 //import java.sql.Date;
 
 public class MemberVO {
+	private String fileName;
 	private String name;
 	private String id;
 	private String pwd;
@@ -11,8 +12,16 @@ public class MemberVO {
 	private String gender;
 	private String region1;
 	private String region2;
-	private String mbti;
+	private String MBTI;
 	
+	
+	
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 	public String getName() {
 		return name;
 	}
@@ -61,11 +70,13 @@ public class MemberVO {
 	public void setRegion2(String region2) {
 		this.region2 = region2;
 	}
-	public String getMbti() {
-		return mbti;
+	public String getMBTI() {
+		return MBTI;
 	}
-	public void setMbti(String mbti) {
-		this.mbti = mbti;
+	public void setMBTI(String MBTI) {
+		this.MBTI = MBTI;
 	}
 	
+
+
 }

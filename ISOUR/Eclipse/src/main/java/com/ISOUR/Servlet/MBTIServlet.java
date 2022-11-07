@@ -1,7 +1,6 @@
 package com.ISOUR.Servlet;
 
 import java.io.*;
-//import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,14 +11,15 @@ import org.json.simple.JSONObject;
 import com.ISOUR.Common.Common;
 import com.ISOUR.DAO.MemberDAO;
 
-@WebServlet("/MemberRegServlet")
-public class MemberRegServlet extends HttpServlet {
+@WebServlet("/TestServlet")
+public class MBTIServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-	
+
 	protected void doOptions(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Common.corsResSet(response);
 	}
@@ -35,20 +35,12 @@ public class MemberRegServlet extends HttpServlet {
 		// 요청 받은 메시지 JSON 파싱
 		JSONObject jsonObj = Common.getJsonObj(sb);
 		
-		// TeamAPI.js 에 작성해둔 memberReg : "memberObj" 를 가져온다.
-//		String getFileName = (String)jsonObj.get("fileName");
-		String getName = (String)jsonObj.get("name");
+		// TeamAPI.js 에 작성해둔 mbtiReg : "resultObj" 를 가져온다.
+		String getMBTI = (String)jsonObj.get("mbti");
 		String getId = (String)jsonObj.get("id");
-		String getPwd = (String)jsonObj.get("pwd");
-		String getBirth = (String)jsonObj.get("birth");
-		String getAge = (String)jsonObj.get("age");
-		String getGender = (String)jsonObj.get("gender");
-		String getRegion1 = (String)jsonObj.get("region1");
-		String getRegion2 = (String)jsonObj.get("region2");
-		
 		
 		MemberDAO dao = new MemberDAO();
-		boolean rstComplete = dao.memberRegister(getName, getId, getPwd, getBirth, getAge, getGender, getRegion1, getRegion2);
+		boolean rstComplete = dao.mbtiRegister(getMBTI, getId);
 		
 		PrintWriter out = response.getWriter();
 		JSONObject resJson = new JSONObject();
