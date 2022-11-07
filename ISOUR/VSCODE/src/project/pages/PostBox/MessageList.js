@@ -5,13 +5,14 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import imgHome from '../../images/home_button.png'
 import '../../CSS/Style_Login.css';
+import './MessageList.css';
 import SignUpModal from './SignUpModal'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const MessageList = () => {
   const localId = window.localStorage.getItem("userId");
 
-  
+
   const [messageList, setMessageList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
@@ -19,46 +20,68 @@ const MessageList = () => {
 
   let inputMessage;
   // 테스트중
-  
+
   // const namesList = window.localStorage.getItem("userId");
   // const [namesList , setNamesList ] = useState([]);
 
 
   let receiverId = 'dleldi';
-  const MemberListBlock = styled.div`
-    box-sizing: border-box;
-    padding-bottom: 3em;
-    width: 768px;
-    margin: 0 auto;
-    margin-top: 2rem;
-    @media screen and (max-width: 768px) {
-      width: 100%;
-      padding-left: 1em;
-      padding-right:1em;
-    }
-  `;
 
-  const MemberList = styled.table`
-    border-collapse: collapse;
-    width: 768px;
-    margin: 0 auto;
-    font-size: 1.125em;
-    @media screen and (max-width: 768px) {
-      witdh: 100%;
+    const Styled = styled.div`
+    overflow: scroll;
+    &::-webkit-scrollbar{
+      /*가로 스크롤 넓이*/
+      width: 8px;
+      /*세로 스크롤 넓이*/
+      height: 8px;
+      
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.4);
     }
-    th, td {
-      border:1px solid #ccc;
-      padding: 2px;
+    &::-webkit-scrollbar-thumb{
+      background-color: rgba(0,0,0,0.3);
+      border-radius:6px;
     }
-    th {
-      background-color: bisque;
-    }
-  `;
+    height: 300px;
+    `;
 
-  const MemberTitle = styled.table`
-    font-size: 2em;
-    text-align: center;
-  `;
+
+
+
+  // const MemberListBlock = styled.div`
+  //   box-sizing: border-box;
+  //   padding-bottom: 3em;
+  //   width: 768px;
+  //   margin: 0 auto;
+  //   margin-top: 2rem;
+  //   @media screen and (max-width: 768px) {
+  //     width: 100%;
+  //     padding-left: 1em;
+  //     padding-right:1em;
+  //   }
+  // `;
+
+  // const MemberList = styled.table`
+  //   border-collapse: collapse;
+  //   width: 768px;
+  //   margin: 0 auto;
+  //   font-size: 1.125em;
+  //   @media screen and (max-width: 768px) {
+  //     witdh: 100%;
+  //   }
+  //   th, td {
+  //     border:1px solid #ccc;
+  //     padding: 2px;
+  //   }
+  //   th {
+  //     background-color: bisque;
+  //   }
+  // `;
+
+  // const MemberTitle = styled.table`
+  //   font-size: 2em;
+  //   text-align: center;
+  // `;
 
   useEffect(() => {
     const messageData = async () => {
@@ -78,11 +101,11 @@ const MessageList = () => {
         // for(let i=0; i <testArray.length; i++) {
         //   console.log("testArray[" + i + "] : " + testArray[i]);
         // }
-        
+
         // console.log(response.data[0].name);
         // console.log("typeof(response.data) : " + typeof(response.data));
 
-        
+
       } catch (e) {
         console.log(e);
       }
@@ -100,11 +123,11 @@ const MessageList = () => {
 
   // 여기까지 모달 테스트
 
-  const onClickSendMessage = async() => {
+  const onClickSendMessage = async () => {
     console.log("쪽지 보내기 눌렀어요.");
     inputMessage = prompt("쪽지 내용을 작성하세요.", "");
-    
-    if(inputMessage !== "") {
+
+    if (inputMessage !== "") {
       const messageReg = await TeamAPI.messageReg(localId, receiverId, inputMessage);
       console.log("\n\nlocalId : " + messageReg);
       console.log("받는 사람(receiverId) : " + messageReg.receiverId);
@@ -136,11 +159,11 @@ const MessageList = () => {
     console.log("boxs.length : " + boxs.length);
 
     // let selectedMessage = [];
-    for(let i=0; i<boxs.length; i++) {
+    for (let i = 0; i < boxs.length; i++) {
       var chkbox = boxs[i].rows;
       console.log("chkbox : " + chkbox);
 
-      if(chkbox) boxs.deleteRow(i);
+      if (chkbox) boxs.deleteRow(i);
       // if(boxs[i] == true) 
     }
   }
@@ -149,47 +172,51 @@ const MessageList = () => {
     let isChecked = e.target.checked;
     console.log("isChecked : " + isChecked); // true
     let boxs = document.getElementsByClassName("checkboxs");
-    for(let i=0; i<boxs.length; i++) {
+    for (let i = 0; i < boxs.length; i++) {
       boxs[i].checked = isChecked;
     }
   }
 
-  if(loading) {
-    return <MemberListBlock>대기 중...</MemberListBlock>
+  if (loading) {
+    return <div>대기 중...</div>
   }
 
-  return(
+  return (
     <>
-      <SignUpModal modalName={name} modalContent={content} show={signUpModalOn} onHide={()=>setSignUpModalOn(false)}/>
+      <SignUpModal modalName={name} modalContent={content} show={signUpModalOn} onHide={() => setSignUpModalOn(false)} />
       <div className='Container'>
         {/* 모달 테스트 중 */}
-        
-        <MemberListBlock>
-          <MemberList>
-            {localId}
-            <MemberTitle>받은 쪽지함</MemberTitle>
-            <button onClick={onClickSendMessage}>{receiverId}</button>
-            <button onClick={onClickDelete}>삭제하기</button>
-            <tr>
-              <th><input type="checkbox" onClick={checkAll} /></th>
-              <th>보낸 사람(NAME)</th>
-              <th>내용(CONTENT)</th>
-              <th>시간(DATETIME)</th>
-            </tr>
-            {messageList && messageList.map(message => (
-              <tr key={message.datetime}>
-                <td><input type="checkbox" className="checkboxs" /></td>
-                <td>{message.name}</td>
-                <td onClick={()=>onClickMessage(message.name, message.content)}>{message.content}</td>
-                <td>{message.datetime}</td>
+
+        <div className='outbox'>
+          <div className='name'>Post Box</div>
+          <Styled>
+            <table className='tableContainer'>
+
+              <tr className='tr1'>
+                <th className='th1'><input type="checkbox" onClick={checkAll} /></th>
+                <th>보낸 사람(NAME)</th>
+                <th>내용(CONTENT)</th>
+                <th className='th3'>시간(DATETIME)</th>
               </tr>
-            ))}
-          </MemberList>
-          <Link to="/" className="link-box">
-            <img className="link-img" src={imgHome} alt="HOME" />
-          <p>HOME으로 이동</p>
-          </Link>
-        </MemberListBlock>
+              {messageList && messageList.map(message => (
+                <tr key={message.datetime}>
+                  <td><input type="checkbox" className="checkboxs" /></td>
+                  <td>{message.name}</td>
+                  <td onClick={() => onClickMessage(message.name, message.content)}>{message.content}</td>
+                  <td>{message.datetime}</td>
+                </tr>
+              ))}
+            </table>
+          </Styled>
+          <button onClick={onClickSendMessage}>{receiverId}</button>
+          <button onClick={onClickDelete}>삭제하기</button>
+          <span>
+            <Link to="/home" className="link-box">
+              <img className="link-img" src={imgHome} alt="HOME" />
+              <p>HOME으로 이동</p>
+            </Link>
+          </span>
+        </div>
       </div>
     </>
   );
