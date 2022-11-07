@@ -94,6 +94,8 @@ const TeamAPI = {
     return await axios.post(TEAM_DOMAIN + "PostboxServlet", regCmd, HEADER);
   },
 
+  
+
   // 이미지 파일 업로드
   UploadService: async function(formData) {
     const regCheck = {
