@@ -202,6 +202,10 @@ public class MemberDAO {
 			result = pstmt.executeUpdate();	
 			System.out.println("회원 가입 DB 결과 확인 : " + result);
 			
+			stmt = conn.createStatement(); // Statement 객체 얻기
+            rs = stmt.executeQuery(createSQL);
+            System.out.println("쪽지함 테이블 생성 확인 : " + rs);
+            
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
