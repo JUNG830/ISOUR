@@ -4,8 +4,8 @@ import TeamAPI from '../api/TeamAPI'
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import imgHome from '../images/home_button.png'
-import '../CSS/Style_Login.css';
-import noImage from '../images/no_image.gif';
+import '../../CSS/Style_Login.css';
+import noImage from '../../images/no_image.gif';
 
 
 const AdminMemberInfo = () => {

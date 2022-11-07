@@ -1,4 +1,4 @@
-package com.ISOUR.servlet;
+package com.ISOUR.Servlet;
 
 import java.io.*;
 import java.util.List;
@@ -6,12 +6,12 @@ import java.util.List;
 import javax.servlet.http.*;
 import javax.servlet.ServletException;
 
-import com.ISOUR.dao.MessageDAO;
-import com.ISOUR.vo.MessageVO;
+import com.ISOUR.DAO.MessageDAO;
+import com.ISOUR.VO.MessageVO;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.ISOUR.common.Common;
+import com.ISOUR.Common.Common;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;

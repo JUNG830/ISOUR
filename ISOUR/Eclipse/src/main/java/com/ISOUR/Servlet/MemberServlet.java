@@ -75,7 +75,7 @@ public class MemberServlet extends HttpServlet {
 			memberInfo.put("gender", e.getGender());
 			memberInfo.put("region1", e.getRegion1());
 			memberInfo.put("region2", e.getRegion2());
-			memberInfo.put("mbti", e.getMbti());
+			memberInfo.put("mbti", e.getMBTI());
 			
 			memberArray.add(memberInfo);
 		}
