@@ -26,6 +26,7 @@ import com.ISOUR.DAO.MemberDAO;
  * @author  "SeokRae (kslbsh@gmail.com)"
  * https://www.journaldev.com/2122/servlet-3-file-upload-multipartconfig-part
  */
+@SuppressWarnings("unused")
 @WebServlet("/UploadService")
 @MultipartConfig(fileSizeThreshold=1024*1024*10, 	// 10 MB 
 					maxFileSize=1024*1024*50,      	// 50 MB
@@ -43,10 +44,10 @@ public class UploadService extends HttpServlet{
 	// 학원 버전 경로
 //	private static final String UPLOAD_DIR = "D:\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp";
 	
-	// 혜경님 버전
-	private static final String UPLOAD_DIR = "D:\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADIMG";
-			
-	// 우 집 버전
+	// 우 노트북
+	private static final String UPLOAD_DIR = "F:\\KH\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADIMG";
+	
+	// 집 버전
 //	private static final String UPLOAD_DIR = "F:\\KH\\TOTAL-1\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADIMG";
 	
 	public UploadService() {

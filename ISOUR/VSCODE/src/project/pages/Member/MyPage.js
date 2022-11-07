@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const MyPage = () => {
   const isLogin = window.localStorage.getItem("isLogin");
-  const DOMAIN = 'http://localhost:8111/ISOUR/mypage/file/';
+  const DOMAIN = 'http://localhost:8111/ISOUR/MemberInfo/file/';
   if(isLogin === "FALSE") window.location.replace("/");
 
   const localId = window.localStorage.getItem("userId");
@@ -49,7 +49,7 @@ const MyPage = () => {
   const onClickTestStart = () => {
     console.log("검사하기 버튼 눌렀어요.");
     // alert("콘솔 확인하세요.")
-    window.location.replace("/pg");
+    window.location.replace("/Exam");
   }
 
 // 파일 업로드 관련 코드

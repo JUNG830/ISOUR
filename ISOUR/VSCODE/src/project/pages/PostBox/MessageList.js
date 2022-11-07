@@ -1,11 +1,11 @@
 
 import { useState, useEffect } from 'react';
-import TeamAPI from '../api/TeamAPI'
+import TeamAPI from '../../api/TeamAPI'
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
-import imgHome from '../images/home_button.png'
-import '../CSS/Style_Login.css';
-import SignUpModal from '../modals/SignUpModal';
+import imgHome from '../../images/home_button.png'
+import '../../CSS/Style_Login.css';
+import SignUpModal from './SignUpModal';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const MessageList = () => {

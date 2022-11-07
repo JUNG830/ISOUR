@@ -11,6 +11,7 @@ import MemberUpdate from './project/pages/Member/MemberUpdate';
 import Boarding from './project/pages/Boarding';
 import Exam from './project/pages/Exam/Exam';
 import MbtiTypes from './project/pages/MBTIType/MbtiTypes';
+import MessageList from './project/pages/PostBox/MessageList';
 
 
 
@@ -30,6 +31,8 @@ function App() {
         <Route path='/MemberUpdate' element={<MemberUpdate />} />
         <Route path='/Boarding' element={<Boarding />} />
         <Route path='/MbtiTypes' element={<MbtiTypes />} />
+        <Route path='/MessageList' element={<MessageList />} />
+        
       </Routes>
     </Router>
   );
