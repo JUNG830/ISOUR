@@ -46,7 +46,7 @@ function Login() {
         window.localStorage.setItem("userId", inputId);
         window.localStorage.setItem("userPw", inputPassword);
         window.localStorage.setItem("isLogin", "TRUE");
-        window.location.replace("/home");
+        window.location.replace("/");
       } else {
         alert("아이디 또는 비밀번호를 확인하세요!");
       }
