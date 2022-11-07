@@ -273,12 +273,23 @@ function SignUp() {
   }
 
   return (
-    <div>
+    <div className='Container'>
+      {/*회원 가입 텍스트*/}
+      <div className='MainName'>
+        <h2>회원가입</h2>
+      </div>
+      <div className='MainGrid'>
+        <span className='MainPoint'>*필수입력사항</span>
+        
+      </div>
     {/* 이름 */}
+    <div className='LoginMain'>
       <div className='field-wrap'>
         <div className='input-field'>
-          <span style={{display: 'inline-block', width: 150}}>이름</span>
-          <input type="text" value={name} onChange={onChangeName} required />
+          <div className='input-block'>
+            <span className='TitleName' style={{display: 'inline-block', width: 150}}>이름</span>
+            <input className='inputCheck'type="text" value={name} placeholder='이름을 입력 해주세요' onChange={onChangeName} required />
+          </div>
         </div>
         <Msg>
           {showReqName && req_name}
@@ -287,13 +298,9 @@ function SignUp() {
 
     {/* 아이디 */}
       <div className='field-wrap'>
-        <div className='input-field'>
-          <span style={{display: 'inline-block', width: 150}}>아이디</span>
-          <input type="text" value={id} onChange={onChangeId} required/>
-        </div>
-        <div>
+          <span className='TitleName' style={{display: 'inline-block', width: 150}}>아이디</span>
+          <input className='inputCheck' type="text" value={id} placeholder='아이디를 입력 해주세요' onChange={onChangeId} required/>
           <button className='IdCheckBtn' onClick={onClickIdCheck} required>중복확인</button>
-        </div>
         <Msg>
           {showReqId && req_id}
           {showGuideId && guide_id}
@@ -305,16 +312,18 @@ function SignUp() {
     {/* 비밀번호 */}
       <div className='field-wrap'>
         <div className='input-field'>
-          <span style={{display: 'inline-block', width: 150}}>비밀번호</span>
-          <input type="password" value={password} onChange={onChangePassword} />
+          <span className='TitleName' style={{display: 'inline-block', width: 150}}>비밀번호</span>
+          <input className='inputCheck' type="password" value={password} placeholder='비밀번호를 입력 해주세요' onChange={onChangePassword} />
         </div>
         <Msg>
           {showGuidePassword && guide_password}
           {showAcceptPassword && accept_password}
         </Msg>
-  
-          <span style={{display: 'inline-block', width: 150}}>비밀번호 확인</span>
-          <input type="password" value={password_check} onChange={onChangePassword_check} disabled={!regexPw.test(password)}/>
+
+        <div className='input-field'>
+          <span className='TitleName' style={{display: 'inline-block', width: 150}}>비밀번호 확인</span>
+          <input className='inputCheck' type="password" value={password_check} placeholder='비밀번호 확인' onChange={onChangePassword_check} disabled={!regexPw.test(password)}/>
+          </div>
         <Msg>
           {showErrorPasswordCheck && error_password_check}
           {showAcceptPasswordCheck && accept_password_check}
@@ -325,28 +334,30 @@ function SignUp() {
     {/* 생년월일 */}
       <div className='field-wrap'>
         <div className='input-field'>
-          <span style={{display: 'inline-block', width: 150}}>생년월일</span>
-          <input type="date" value={birth} onChange={onChangeBirth} />
-          <span>만 {age}세</span>
+          <span className='TitleName' style={{display: 'inline-block', width: 150}}>생년월일</span>
+          <input className='Date'type="date" value={birth} onChange={onChangeBirth} />
+          <span className='Age'>만 {age}세</span>
         </div>
       </div>
 
     {/* 성별 */}
       <div className='field-wrap'>
         <div className='input-field'>
-        <span style={{display: 'inline-block', width: 150}}>성별</span>
-          <label>
+        <span className='TitleName' style={{display: 'inline-block', width: 150}}>성별</span>
+          <label className='sex-man'>
             <input type="radio" name="sex" value="남자" onChange={onChangeRadio} /> 남자
           </label>
-          <label>
+          <label className='sex-woman'>
             <input type="radio" name="sex" value="여자" onChange={onChangeRadio} /> 여자
           </label>
         </div>
       </div>
 
     {/* 주소 */}
-      <div>
-        <select onChange={onChangeRegion1}>
+    <div className='field-wrap'>
+      <div className='input-field'>
+        <div className='TitleName'>주소</div>
+        <select className='AddrSelect' onChange={onChangeRegion1}>
           <option disabled selected>시도선택</option>
           {sido.map((e) => (
             <option key={e.sido} value={e.codeNm}>
@@ -354,7 +365,7 @@ function SignUp() {
             </option>
           ))}
         </select>
-        <select onChange={onChangeRegion2}>
+        <select className='AddrSelect2' onChange={onChangeRegion2}>
           <option disabled selected>시/구/군선택</option>
           
           {sigugun
@@ -366,10 +377,14 @@ function SignUp() {
               </option>
             ))}
         </select>
+        </div>
       </div>
 
     {/* 회원가입 */}
-      <button type="submit" onClick={onClickButton}>회원가입</button>
+    <div className='SuBtn'>
+      <button className='SignUpBtn' type="submit" onClick={onClickButton}>회원가입</button>
+      </div>
+      </div>
     </div>
   );
 }
