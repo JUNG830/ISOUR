@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import TeamAPI from '../api/TeamAPI';
-import hangjungdong from "../hangjungdong";
-import '../CSS/Style_Login.css'
+import TeamAPI from '../../api/TeamAPI';
+import hangjungdong from "../../hangjungdong";
+import '../../CSS/Style_Login.css'
 import { Link } from 'react-router-dom';
-import noImage from '../images/no_image.gif';
-import '../CSS/Style_Login.css'
+import noImage from '../../images/no_image.gif';
+import '../../CSS/Style_Login.css'
 import axios from 'axios';
 
 // 정규식 조건

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import TeamAPI from '../api/TeamAPI'
-import nowGo from '../images/short_cut.png'
-import noImage from '../images/no_image.gif';
+import TeamAPI from '../../api/TeamAPI';
+import nowGo from '../../images/short_cut.png'
+import noImage from '../../images/no_image.gif';
 import { Link } from 'react-router-dom';
 
 const MyPage = () => {

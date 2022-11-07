@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Main from './project/pages/Main';
 import Login from './project/Login/Login';
-import MyPage from './project/pages/MyPage';
+import MyPage from './project/pages/Member/MyPage';
 import AdminMemberInfo from './project/pages/Member/AdminMemberInfo';
-import MemberDrop from './project/pages/MemberDrop';
+import MemberDrop from './project/pages/Member/MemberDrop';
 import SignUp from './project/SingUp/SignUp';
 import Navbar2 from './project/Navbar/Navbar2';
 import FileUpload2 from './project/FileUpload/FileUpload2';
-import MemberUpdate from './project/pages/MemberUpdate';
+import MemberUpdate from './project/pages/Member/MemberUpdate';
 import Boarding from './project/pages/Boarding';
 import Exam from './project/pages/Exam/Exam';
 import MbtiTypes from './project/pages/MBTIType/MbtiTypes';

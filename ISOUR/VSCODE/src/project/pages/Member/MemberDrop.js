@@ -1,9 +1,9 @@
 
 import { useState, useEffect } from 'react';
-import TeamAPI from '../../api/TeamAPI'
+import TeamAPI from '../../api/TeamAPI';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
-import imgHome from '../images/home_button.png'
+import imgHome from '../../images/home_button.png'
 import Modal from '../../util/Modal';
 
 const MemberDrop = () => {
