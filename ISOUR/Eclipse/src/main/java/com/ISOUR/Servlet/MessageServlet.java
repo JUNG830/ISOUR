@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class MessageServlet {
+	
     @PostMapping("/MessageServlet")
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 한글 깨짐 방지를 위해서 설정
