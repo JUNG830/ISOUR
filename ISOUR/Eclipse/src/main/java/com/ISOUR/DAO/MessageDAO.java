@@ -6,6 +6,7 @@ import java.util.*;
 import com.ISOUR.Common.Common;
 import com.ISOUR.VO.MessageVO;
 
+// 메세지 관련 DAO
 public class MessageDAO {
     private Connection conn = null;
     private Statement stmt = null; //표준 SQL문을 수행하기 위한 Statement 객체 얻기
@@ -20,6 +21,8 @@ public class MessageDAO {
             conn = Common.getConnection();
             stmt = conn.createStatement();
             String sql = "SELECT * FROM " + reqId;
+            
+        System.out.println("MessageDAO ID넘어오나 : " + reqId);
 
             rs = stmt.executeQuery(sql);
 
@@ -73,51 +76,50 @@ public class MessageDAO {
     }
 
     // 탈퇴할 때 쪽지함 자동 삭제
-    public boolean dropCheck(String id, String pwd) {
-        int isOut = 0;
-
-        System.out.println("넘어온 id : " + id);
-        System.out.println("넘어온 pwd : " + pwd);
-
-        try {
-            conn = Common.getConnection();
-            stmt = conn.createStatement(); // Statement 객체 얻기
-            // WHERE 뒤에 조건 컬럼명이 테이블과 동일해야 함(한글 안 됨)
-            String selectSQL = "SELECT * FROM I_MEMBER WHERE ID = " + "'" + id + "' AND PASSWORD = " + "'" + pwd + "'";
-            String deleteSQL = "DELETE FROM I_MEMBER WHERE ID = " + "'" + id + "' AND PASSWORD = " + "'" + pwd + "'";
-            String dropTableSQL = "DROP TABLE " + id ;
-
-            rs = stmt.executeQuery(selectSQL);
-
-            while(rs.next()) { // 읽은 데이타가 있으면 true
-                // getString() 안에 테이블의 컬럼명과 동일하게 입력해야 함
-                String sqlId = rs.getString("ID"); // 쿼리문 수행 결과에서 ID값을 가져 옴
-                String sqlPwd = rs.getString("PASSWORD");
-
-                System.out.println("가입 되어 있는 ID : " + sqlId);
-                System.out.println("가입 되어 있는 PASSWORD : " + sqlPwd);
-
-                System.out.println("id : " + id + "/ sqlId : " + sqlId);
-                System.out.println("pwd : " + pwd + "/ sqlPwd : " + sqlPwd);
-
-                if(id.equals(sqlId) && pwd.equals(sqlPwd)) {
-                    pstmt = conn.prepareStatement(deleteSQL);
-                    isOut = pstmt.executeUpdate();
-
-                    Common.close(rs);
-                    Common.close(stmt);
-                    Common.close(conn);
-                    return true;
-                }
-            }
-            Common.close(rs);
-            Common.close(stmt);
-            Common.close(conn);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-
-        return false;
-    }
+//    public boolean dropCheck(String id, String pwd) {
+//        int isOut = 0;
+//
+//        System.out.println("넘어온 id : " + id);
+//        System.out.println("넘어온 pwd : " + pwd);
+//
+//        try {
+//            conn = Common.getConnection();
+//            stmt = conn.createStatement(); // Statement 객체 얻기
+//            // WHERE 뒤에 조건 컬럼명이 테이블과 동일해야 함(한글 안 됨)
+//            String selectSQL = "SELECT * FROM I_MEMBER WHERE ID = " + "'" + id + "' AND PASSWORD = " + "'" + pwd + "'";
+//            String deleteSQL = "DELETE FROM I_MEMBER WHERE ID = " + "'" + id + "' AND PASSWORD = " + "'" + pwd + "'";
+//            String dropTableSQL = "DROP TABLE " + id ;
+//
+//            rs = stmt.executeQuery(selectSQL);
+//
+//            while(rs.next()) { // 읽은 데이타가 있으면 true
+//                // getString() 안에 테이블의 컬럼명과 동일하게 입력해야 함
+//                String sqlId = rs.getString("ID"); // 쿼리문 수행 결과에서 ID값을 가져 옴
+//                String sqlPwd = rs.getString("PASSWORD");
+//
+//                System.out.println("id : " + id + "/ sqlId : " + sqlId);
+//                System.out.println("pwd : " + pwd + "/ sqlPwd : " + sqlPwd);
+//
+//                if(id.equals(sqlId) && pwd.equals(sqlPwd)) {
+//                    pstmt = conn.prepareStatement(deleteSQL);
+//                    pstmt = conn.prepareStatement(dropTableSQL);
+//                    isOut = pstmt.executeUpdate();
+//
+//                    Common.close(rs);
+//                    Common.close(stmt);
+//                    Common.close(conn);
+//                    return true;
+//                }
+//            }
+//            Common.close(rs);
+//            Common.close(stmt);
+//            Common.close(conn);
+//            
+//        } catch(Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        return false;
+//    }
 
 }

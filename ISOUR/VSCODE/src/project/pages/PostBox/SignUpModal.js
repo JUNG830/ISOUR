@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import { propTypes } from "react-bootstrap/esm/Image";
+import { propTypes } from "react-bootstrap/esm/Image";  // yarn add react-bootstrap bootstrap 실행
 import TeamAPI from '../../api/TeamAPI'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const SignUpModal = ( { show, onHide, modalName, modalContent }) => {
   const [signUpModalOn, setSignUpModalOn] = useState(false);

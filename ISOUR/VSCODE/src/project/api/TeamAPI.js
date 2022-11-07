@@ -94,6 +94,17 @@ const TeamAPI = {
     return await axios.post(TEAM_DOMAIN + "PostboxServlet", regCmd, HEADER);
   },
 
+    // 쪽지보내기
+    messageReg: async function(id, receiverId, content) {
+      const messageObj = {
+        id: id,
+        receiverId: receiverId,
+        content: content
+      };
+  
+      return await axios.post(TEAM_DOMAIN + "MessageServlet", messageObj, HEADER);
+    },
+
   
 
   // 이미지 파일 업로드

@@ -9,6 +9,7 @@ import logo from '../images/logo.png';
 
 function Navbar2() {
     const uavRef = useRef();
+    const localId = window.localStorage.getItem("userId");
 
     const showNavBar = () => {
         uavRef.current.classList.toggle("responsive_nav");
@@ -24,9 +25,12 @@ function Navbar2() {
             </div>
             <nav ref={uavRef}>
                 <a href="/">HOME</a>
-                <a href="/QuizApp">TEST</a>
-                <a href="/#">BOARD</a>
-                <a href="/mypage">My Page</a>
+                <a href="/Exam">TEST</a>
+                <a href="/MbtiTypes">BOARD</a>
+                {(localId === 'admin') ? 
+                    <a href="/AdminMemberInfo">My Page</a>
+                    :  <a href="/mypage">My Page</a>
+                }
                 {/* 닫기 버튼 */}
                 <button className="nav-btn nav-colse-btn" onClick={showNavBar}>
                    <FaTimes /> 

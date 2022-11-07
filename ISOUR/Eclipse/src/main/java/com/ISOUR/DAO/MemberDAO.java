@@ -72,16 +72,13 @@ public class MemberDAO {
                 String sqlId = rs.getString("ID"); // 쿼리문 수행 결과에서 ID값을 가져 옴
                 String sqlPwd = rs.getString("PASSWORD");
 
-                System.out.println("가입 되어 있는 ID : " + sqlId);
-                System.out.println("가입 되어 있는 PASSWORD : " + sqlPwd);
-
                 System.out.println("id : " + id + "/ sqlId : " + sqlId);
                 System.out.println("pwd : " + pwd + "/ sqlPwd : " + sqlPwd);
 
                 if(id.equals(sqlId) && pwd.equals(sqlPwd)) {
                     pstmt = conn.prepareStatement(dropTableSQL);
                     isOut = pstmt.executeUpdate();
-
+                    
                     pstmt = conn.prepareStatement(deleteSQL);
                     isOut = pstmt.executeUpdate();
 
@@ -183,7 +180,7 @@ public class MemberDAO {
 		// 테이블 컬럼명이랑 똑같이
 		// 회원가입에서 사진 안 받을거니까 생략.
 		String sql = "INSERT INTO I_MEMBER (FILENAME, FILEPATH, NAME, ID, PASSWORD, BIRTH, AGE, GENDER, REGION1, REGION2, MBTI) VALUES('', '', ?, ?, ?, ?, ?, ?, ?, ?, '')";
-		 String createSQL = "CREATE TABLE " + id + "( NAME VARCHAR2(30), CONTENT VARCHAR2(30), DATETIME VARCHAR2(50) DEFAULT TO_CHAR(SYSDATE, 'yyyy-mm-dd hh24:mi:ss') )";
+		 String createSQL = "CREATE TABLE " + id + "( ID VARCHAR2(30), CONTENT VARCHAR2(500), DATETIME VARCHAR2(50) DEFAULT TO_CHAR(SYSDATE, 'yyyy-mm-dd hh24:mi:ss') )";
 		try {
 			conn = Common.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -281,10 +278,10 @@ public class MemberDAO {
 			else return false;
 		}
 		
+		// 회원정보수정
 		public boolean memberUpdate(String name, String id, String pwd, String birth, String age, String gender, String region1, String region2) {
 			int result = 0;
 			// 테이블 컬럼명이랑 똑같이
-			// 회원가입에서 사진 안 받을거니까 생략.
 			String sql = "UPDATE I_MEMBER SET NAME=?, BIRTH=?, AGE=?, GENDER=?, REGION1=?, REGION2=? WHERE ID = ? ";
 			try {
 				conn = Common.getConnection();

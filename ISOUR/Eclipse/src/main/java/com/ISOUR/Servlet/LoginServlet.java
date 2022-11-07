@@ -13,7 +13,7 @@ import org.json.simple.JSONObject;
 import com.ISOUR.Common.Common;
 import com.ISOUR.DAO.MemberDAO;
 
-
+// 로그인
 @SuppressWarnings("serial")
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {

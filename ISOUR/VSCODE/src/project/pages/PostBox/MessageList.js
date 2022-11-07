@@ -185,7 +185,7 @@ const MessageList = () => {
               </tr>
             ))}
           </MemberList>
-          <Link to="/home" className="link-box">
+          <Link to="/" className="link-box">
             <img className="link-img" src={imgHome} alt="HOME" />
           <p>HOME으로 이동</p>
           </Link>

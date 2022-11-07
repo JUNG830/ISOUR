@@ -12,6 +12,7 @@ import org.json.simple.JSONObject;
 import com.ISOUR.Common.Common;
 import com.ISOUR.DAO.MemberDAO;
 
+// 회원 정보 수정
 @WebServlet("/MemberUpdateServlet")
 public class MemberUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

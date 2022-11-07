@@ -12,7 +12,7 @@ import com.ISOUR.Common.Common;
 import com.ISOUR.DAO.MemberDAO;
 
 
-
+// 회원 가입 여부 체크
 @WebServlet("/MemberCheck")
 public class MemberCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;

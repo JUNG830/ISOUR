@@ -1,8 +1,12 @@
 DROP TABLE I_MEMBER;
+DROP TABLE dleldi;
+DROP TABLE rlfehddl;
 
 SELECT * FROM I_MEMBER;
+SELECT * FROM dleldi;
+SELECT * FROM rldyal;
 COMMIT;
-
+// 전체 회원 테이블
 CREATE TABLE I_MEMBER (
     FILEPATH    VARCHAR2(200),
     FILENAME    VARCHAR2(100),
@@ -16,6 +20,12 @@ CREATE TABLE I_MEMBER (
     REGION2     VARCHAR2(30),
     MBTI        VARCHAR2(10)
 );
+// 회원가입시 해당 ID로 쪽지 테이블 생성
+CREATE TABLE rldyal (
+    ID          VARCHAR2(30),
+    CONTENT     VARCHAR2(500),
+    DATETIME    VARCHAR2(50) DEFAULT TO_CHAR(SYSDATE, 'yyyy-mm-dd hh24:mi:ss')
+);
 
 INSERT INTO I_MEMBER VALUES('', '', '어드민', 'admin', 'admin1234', '1971-05-08', '52', '여자', '부산광역시', '해운대구', '');
 INSERT INTO I_MEMBER VALUES('', '', '이디야', 'dleldi', 'dleldi88', '2000-06-06', '22', '남자', '대구광역시', '수성구', ''); 
@@ -28,4 +38,6 @@ DELETE FROM I_MEMBER WHERE NAME = '어드민';
 UPDATE I_MEMBER SET FILEPATH = '', FILENAME = '' WHERE ID = 'admin';
 UPDATE I_MEMBER SET NAME='', PASSWORD='', BIRTH='', AGE='', GENDER='', REGION1='', REGION2='', MBTI='' WHERE ID = 'dleldi';
 rollback;
+
+INSERT INTO dleldi (ID, CONTENT) VALUES(?, ?)
 

@@ -89,12 +89,12 @@ const MyPage = () => {
         <div className="mainhead">
           
           {/* admin 계정일 때만 회원목록조회 버튼 생성 */}
-          { localId === 'admin' &&
+          {/* { localId === 'admin' &&
             <div onClick={onClickMember}>
               <img src={nowGo} alt="화살표"/>
               <Link to='/AdminMemberInfo'><span>회원 목록 조회</span></Link>
             </div>
-          }
+          } */}
           
         </div>
         <div className="history" >
@@ -148,7 +148,11 @@ const MyPage = () => {
                 </tr>
                 <tr>
                   <th className='mypage-th'>MBTI</th>
-                  <td className='mypage-td'>{member.MBTI ? member.MBTI : <button onClick={onClickTestStart}>검사하기</button>}</td>
+                  <td className='mypage-td'> 
+                    { member.mbti ? 
+                        member.mbti 
+                        : <button onClick={onClickTestStart}>검사하기</button>}
+                  </td>
                 </tr>
                 <tr>
                   <br />

@@ -205,7 +205,7 @@ const onChangeName = e => {
         console.log("region2 : " + region2);
         console.log("가입 완!!");
         alert("콘솔창 확인용");
-        window.location.replace("/");
+        window.location.replace("/mypage");
     // } else {
     //   console.log("잘못 입력한 값이 있거나 입력되지 않은 값이 있어요.");
     //   alert('입력된 값을 확인하세요.');
@@ -243,12 +243,14 @@ const onChangeName = e => {
               <td colSpan="2" align='center' >
                 <form className='profileImg-label' >     
                   { member.fileName ?  
-                    <img src={`${DOMAIN}` + `${member.fileName}`} width='160px' height='200px'/>
-                    : <img src={noImage} width='160px' height='200px' />
+                    <img src={`${DOMAIN}` + `${member.fileName}`} style={{borderRadius:'50%', width: '150px'}} />
+                    : <img src={noImage} style={{borderRadius:'50%', width: '150px'}} />
                   }
                   <label htmlFor='image'>
                   <input className="profileImg-input" type='file' display='none' id='image' accept='image/*' onChange={onFileUpload} />
-                   <br />프로필사진 추가 
+                  <br />
+                  <br />
+                   프로필사진 추가 
                   </label>         
                 </form>
               </td>
@@ -315,7 +317,7 @@ const onChangeName = e => {
             <tr>
               <th>MBTI</th>
               <td>
-                <input type="text" value={member.MBTI} disabled />
+                <input type="text" value={member.mbti} disabled />
               </td>
             </tr>
             <tr>

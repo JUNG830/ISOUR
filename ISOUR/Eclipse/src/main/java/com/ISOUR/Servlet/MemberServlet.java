@@ -18,7 +18,7 @@ import com.ISOUR.Common.Common;
 import com.ISOUR.DAO.MemberDAO;
 import com.ISOUR.VO.MemberVO;
 
-
+// 회원 정보 조회
 @SuppressWarnings("serial")
 @WebServlet("/MemberServlet")
 public class MemberServlet extends HttpServlet {

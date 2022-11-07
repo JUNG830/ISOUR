@@ -13,7 +13,7 @@ import org.json.simple.JSONObject;
 import com.ISOUR.Common.Common;
 import com.ISOUR.DAO.MemberDAO;
 
-
+// 회원 탈퇴
 @SuppressWarnings("serial")
 @WebServlet("/MemberDropServlet")
 public class MemberDropServlet extends HttpServlet {

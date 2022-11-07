@@ -13,12 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.json.simple.JSONObject;
 
-import com.ISOUR.Common.Common;
 import com.ISOUR.DAO.MemberDAO;
-
 /**
  * fileSizeThreshold	서버로 파일을 저장할 때 파일의 임시 저장 사이즈
  * maxFileSize			1개 파일에 대한 최대 사이즈
@@ -26,7 +23,8 @@ import com.ISOUR.DAO.MemberDAO;
  * @author  "SeokRae (kslbsh@gmail.com)"
  * https://www.journaldev.com/2122/servlet-3-file-upload-multipartconfig-part
  */
-@SuppressWarnings("unused")
+
+// 파일 업로드
 @WebServlet("/UploadService")
 @MultipartConfig(fileSizeThreshold=1024*1024*10, 	// 10 MB 
 					maxFileSize=1024*1024*50,      	// 50 MB
@@ -44,12 +42,12 @@ public class UploadService extends HttpServlet{
 	// 학원 버전 경로
 //	private static final String UPLOAD_DIR = "D:\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp";
 	
-	// 우 노트북
-	private static final String UPLOAD_DIR = "F:\\KH\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADIMG";
-	
 	// 집 버전
 //	private static final String UPLOAD_DIR = "F:\\KH\\TOTAL-1\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADIMG";
 	
+	// 우 노트북
+	private static final String UPLOAD_DIR = "F:\\KH\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADIMG";
+		
 	public UploadService() {
 		
 	}
@@ -182,4 +180,3 @@ public class UploadService extends HttpServlet{
 //		}
 //    }
 }
-

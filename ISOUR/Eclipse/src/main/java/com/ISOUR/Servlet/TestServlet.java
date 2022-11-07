@@ -11,6 +11,7 @@ import org.json.simple.JSONObject;
 import com.ISOUR.Common.Common;
 import com.ISOUR.DAO.MemberDAO;
 
+// MBTI 결과 저장
 @WebServlet("/TestServlet")
 public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
