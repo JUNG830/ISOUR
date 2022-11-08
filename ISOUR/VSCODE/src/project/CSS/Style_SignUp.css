@@ -9,7 +9,7 @@
   justify-content: center;
 } */
 
-.Container {
+.SignUp-Container {
   
   /* height: 1000px; */
   /* background-color: #fbfd91; */
@@ -290,7 +290,19 @@
   top: 7px;
 
 }
-
+.Label-gender span::after {
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: #00aeef;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  transition: 300ms ease-in-out 0s;
+}
 
 /*
 .radio {

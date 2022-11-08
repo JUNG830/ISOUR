@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import TeamAPI from '../api/TeamAPI';
 import hangjungdong from "../hangjungdong";
-import '../CSS/Style_Login.css';
+import '../CSS/Style_SignUp.css';
 import logo from '../images/logo.png';
 
 // 정규식 조건
@@ -279,7 +279,7 @@ function SignUp() {
   }
 
   return ( 
-    <div className='Container'>
+    <div className='SignUp-Container'>
       <div className='SignUp-card-container'>
       <div className="SignUp-card">
         
@@ -341,7 +341,7 @@ function SignUp() {
               <span className="Form-item-icon material-symbols-rounded">cake</span>
               <input type="date" value={birth} onChange={onChangeBirth} />
               <span className='Span-Age'>만 {age}세</span>
-              <Msg></Msg>
+              <Msg>생년월일을 선택하세요</Msg>
             </div>
 
         {/* 성별 */}
@@ -380,7 +380,7 @@ function SignUp() {
                   </option>
                 ))}
             </select>
-            <Msg></Msg>
+            <Msg>주소를 선택하세요</Msg>
           </div>
 
         {/* 회원가입 */}

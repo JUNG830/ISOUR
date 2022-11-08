@@ -12,7 +12,7 @@ import Boarding from './project/pages/Boarding';
 import Exam from './project/pages/Exam/Exam';
 import MbtiTypes from './project/pages/MBTIType/MbtiTypes';
 import MessageList from './project/pages/PostBox/MessageList';
-
+import Home from './project/pages/Home';
 
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
+        <Route path='/home' element={<Home />} />
         <Route path='/mypage' element={<MyPage />} />
         <Route path='/AdminMemberInfo' element={<AdminMemberInfo />} />
         <Route path='/MemberDrop' element={<MemberDrop />} />
