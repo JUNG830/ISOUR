@@ -7,6 +7,7 @@ import imgHome from '../../images/home_button.png'
 import '../../CSS/Style_Login.css';
 import './MessageList.css';
 import SignUpModal from './SignUpModal'
+
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const MessageList = () => {
@@ -42,46 +43,13 @@ const MessageList = () => {
       background-color: rgba(0,0,0,0.3);
       border-radius:6px;
     }
-    height: 300px;
+    height: 500px;
+    padding: 0px 5px;
     `;
 
 
 
 
-  // const MemberListBlock = styled.div`
-  //   box-sizing: border-box;
-  //   padding-bottom: 3em;
-  //   width: 768px;
-  //   margin: 0 auto;
-  //   margin-top: 2rem;
-  //   @media screen and (max-width: 768px) {
-  //     width: 100%;
-  //     padding-left: 1em;
-  //     padding-right:1em;
-  //   }
-  // `;
-
-  // const MemberList = styled.table`
-  //   border-collapse: collapse;
-  //   width: 768px;
-  //   margin: 0 auto;
-  //   font-size: 1.125em;
-  //   @media screen and (max-width: 768px) {
-  //     witdh: 100%;
-  //   }
-  //   th, td {
-  //     border:1px solid #ccc;
-  //     padding: 2px;
-  //   }
-  //   th {
-  //     background-color: bisque;
-  //   }
-  // `;
-
-  // const MemberTitle = styled.table`
-  //   font-size: 2em;
-  //   text-align: center;
-  // `;
 
   useEffect(() => {
     const messageData = async () => {
@@ -94,16 +62,7 @@ const MessageList = () => {
 
         window.localStorage.setItem("namesList", response.data);
 
-        // const temp_list = response.data;
-        // const testArray = temp_list.map(message => message);
-        // console.log("testArray : " + testArray);
-
-        // for(let i=0; i <testArray.length; i++) {
-        //   console.log("testArray[" + i + "] : " + testArray[i]);
-        // }
-
-        // console.log(response.data[0].name);
-        // console.log("typeof(response.data) : " + typeof(response.data));
+    
 
 
       } catch (e) {
@@ -208,12 +167,12 @@ const MessageList = () => {
               ))}
             </table>
           </Styled>
-          <button onClick={onClickSendMessage}>{receiverId}</button>
-          <button onClick={onClickDelete}>삭제하기</button>
+          <button className='w-btn-neon2' onClick={onClickSendMessage}>{receiverId}</button>
+          <button className='w-btn-neon2' onClick={onClickDelete}>삭제하기</button>
           <span>
-            <Link to="/home" className="link-box">
+            <Link  to="/home" className="link-box">
               <img className="link-img" src={imgHome} alt="HOME" />
-              <p>HOME으로 이동</p>
+              <span> HOME으로 이동 </span>
             </Link>
           </span>
         </div>
