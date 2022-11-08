@@ -45,21 +45,29 @@
   }
 
   .Main-font {
+    animation: 0.6s ease-in-out fadein;
     position: relative;
-    left: 128px;
-    font-size: 60px;
+    top: 200px;
+    margin: 0 auto;
+    font-size: 80px;
+    border: 1px solid;
+    border-radius: 100px;
     color: white;
     font-weight: bold;
+    text-align: center;
+    background-color:rgba(76, 76, 76, 0.7);
+    border-color: rgba(76, 76, 76, 0.7);
+    height: 125px;
+    width: 700px;
   }
 
   .Main-box-font2 {
     position: relative;
-    left: 33.5rem;
-    top: 14rem;
-    font-size: 40px;
+    top: 40rem;
+    font-size: 80px;
     color:#29335c;
     font-weight: bold;
-    overflow: hidden;
+    text-align: center;
     animation: 1.5s ease-in-out fadein;
   }
   .Main-box2 {
@@ -74,7 +82,7 @@
     animation: 0.6s ease-in-out loadEffect1;
     position: relative;
     top: -20px;
-    font-size: 350px;
+    font-size: 600px;
     font-family: 'Times New Roman', Times, serif;
     color:white;
     font-weight: bold;
@@ -98,20 +106,23 @@
   .Main-box2-font2 {
     animation: 1.0s ease-in-out loadEffect1;
     position: relative;
-    top: -100px;
+    font-size: 80px;
+    top: -20px;
   }
   
   .Main-box2-font3 {
     animation: 1.5s ease-in-out loadEffect1;
     position: relative;
-    top:-100px;
+    font-size: 80px;
+    top:-20px;
+    top:-20px;
   }
 
   .Main-box3 {
     position: relative;
     text-align: center;
-    top: 13rem;
-    font-size: 40px;
+    top: 50rem;
+    font-size: 80px;
     color:black;
     font-weight: bold;
   }  
