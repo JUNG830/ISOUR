@@ -4,7 +4,7 @@ import '../CSS/Style_Login.css';
 import logo from '../images/logo.png';
 
 function Login() {
-  // ▼ 로그인되어 있으면 바로 HOME 으로 이동
+  // ▼ 로그인되어 있으면 바로 HOME 으로 이동 
   const isLogin = window.localStorage.getItem("isLogin");
   if(isLogin === "TRUE") window.location.replace("/home");
   // ▲ 로그인되어 있으면 바로 HOME 으로 이동
@@ -62,7 +62,7 @@ function Login() {
   }
 
   return(
-    <div className='Container'>
+    <div className='Login-Container'>
       <div className="Login-card-container">
         <div className="Login-card">
           <div className="Login-card-logo">

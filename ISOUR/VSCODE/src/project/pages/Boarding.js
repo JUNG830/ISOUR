@@ -3,6 +3,7 @@ import border from '../CSS/border.css';
 const Boarding = () => {
 
     return (
+        <div className='container'>
         <div className='html'>
             <div className='board_wrap'>
                 <div className='board_title'>
@@ -71,6 +72,7 @@ const Boarding = () => {
                 </div>
                </div>
             </div>
+        </div>
         </div>
     );
 }
