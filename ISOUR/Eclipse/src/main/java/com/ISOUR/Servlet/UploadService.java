@@ -37,13 +37,13 @@ public class UploadService extends HttpServlet{
 	private static final long serialVersionUID = -4793303100936264213L;
 	
 	private static final String CHARSET = "utf-8";
-	private static final String uploadFilePath = "\\UPLOADIMG";
+	private static final String uploadFilePath = "\\UPLOADING";
 	
 	// 학원 버전 경로
 //	private static final String UPLOAD_DIR = "D:\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp";
 	
 	// 집 버전
-//	private static final String UPLOAD_DIR = "F:\\KH\\TOTAL-1\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADIMG";
+//	private static final String UPLOAD_DIR = "F:\\KH\\TOTAL-1\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
 	
 	// 우 노트북
 	private static final String UPLOAD_DIR = "F:\\KH\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";

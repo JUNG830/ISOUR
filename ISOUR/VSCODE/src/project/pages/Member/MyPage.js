@@ -3,6 +3,7 @@ import TeamAPI from '../../api/TeamAPI';
 import nowGo from '../../images/short_cut.png'
 import noImage from '../../images/no_image.gif';
 import { Link } from 'react-router-dom';
+import '../../CSS/Style_Login.css';
 
 const MyPage = () => {
   const isLogin = window.localStorage.getItem("isLogin");
