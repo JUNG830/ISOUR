@@ -6,9 +6,12 @@ import { Link } from 'react-router-dom';
 import '../../CSS/Style_Login.css';
 
 const MyPage = () => {
+  // ▼ 로그인 안 되어 있으면 로그인 페이지로
   const isLogin = window.localStorage.getItem("isLogin");
+  if(isLogin === "FALSE") window.location.replace("/login");
+  // ▲ 로그인 안 되어 있으면 로그인 페이지로
+
   const DOMAIN = 'http://localhost:8111/ISOUR/MemberInfo/file/';
-  if(isLogin === "FALSE") window.location.replace("/");
 
   const localId = window.localStorage.getItem("userId");
   const localPw = window.localStorage.getItem("userPw");
@@ -18,7 +21,10 @@ const MyPage = () => {
   useEffect(() => {
         
     const memberData = async () => {
-      console.log("localId : "+ localId);
+      console.log("\n\n현재 localStorage 에 저장된 ID : " + localId);
+      console.log("\n\n현재 localStorage 에 저장된 PASSWORD : " + localPw);
+      console.log("\n\n현재 localStorage 에 저장된 isLogin : " + isLogin);
+
       try {
         const response = await TeamAPI.memberInfo(localId); // 원래는 전체 회원 조회용
         setMemberInfo(response.data);
