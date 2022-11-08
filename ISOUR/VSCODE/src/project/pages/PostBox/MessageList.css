@@ -8,8 +8,15 @@
     src: url("https://fonts.googleapis.com/css?family=Gamja+Flower:400");
 }
 
-.tableContainer {
+@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.tableContainer {
     border: 1px  #000000;
     /* width: 700px; */
     /* height: 400px; */
@@ -19,31 +26,42 @@
 }
 
 .name {
-    font-size: 40px;
+    font-family: 'Single Day', cursive;
+
+    font-size: 60px;
     font-weight: 900;
-    font-family: "gamja";
+    
 }
 
 
 table{
-    /* border-radius: 8px; */
+    border-radius: 8px;
+    position: relative;
+    z-index: 1;
+    border: 1px solid #444444;
+    
 }
 
 th,td {
+    font-size: 20px;
+    font-family: 'Single Day', cursive;
     border: 1px solid #444444;
-    padding: 20px;
+    padding: 30px;
+    font-weight: 700;
+    height: 100px;
+    max-height: 100px;
 }
 
 td{
     background-color: whitesmoke;
+    margin: 5px;
 }
 
-
-
 th{
-    
     color: white;
     background-color: #2e3359;
+    position: relative;
+    z-index: 3;
 }
 
 
@@ -53,16 +71,65 @@ th{
 
 }
 
-.th3{
-    /* width: 100px; */
-}
+
 .outbox{
-    /* width: 800px; */
+    width: 800px;
     position: relative;
     bottom: 100px;
 }
-
-.th1{
-    width:20px;
+button {
+    
+    margin: 20px;
 }
 
+.w-btn-neon2 {
+    position: relative;
+    border: none;
+    min-width: 200px;
+    min-height: 50px;
+    background: linear-gradient(
+        90deg,
+        #2e3359,
+        #2e3359 100%
+    );
+    border-radius: 1000px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 6px 6px 12px #2e3359;
+    
+    font-weight: 900;
+    transition: 0.3s;
+    font-family: 'Single Day', cursive;
+    font-size: 23px;
+}
+
+.w-btn-neon2:hover {
+    transform: scale(1.2);
+}
+
+.w-btn-neon2:hover::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 6px solid #2e3359;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 1.5s infinite;
+}
+
+.link-box{
+    position: relative;
+    left:230px;
+    text-decoration: none;
+    color:black;
+}
+.link-box:link{
+    text-decoration: none;
+}
+.link-box:active{
+    text-decoration: none;
+}
