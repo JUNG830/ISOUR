@@ -53,6 +53,8 @@ nav {
 
 nav a {
     margin: 0 2rem;
+    margin-left: 120px;
+    font-size: 20px;
     color: var(--textColor);
     text-decoration: none;
     text-align: center;
@@ -91,7 +93,7 @@ header .nav-btn {
         display: flex;
         flex-direction: center;
         align-items: center;
-        justify-items: center;
+        justify-items: right;
         gap: 1.5rem;
         background-color: var(--mainColor);
         transition: .5s;

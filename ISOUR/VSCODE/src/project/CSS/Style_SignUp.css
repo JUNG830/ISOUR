@@ -100,10 +100,12 @@
 
 .SignUp-card-form .Form-item .Form-item-icon {
   position: absolute;
+  /* justify-items: center; */
   top: .82rem;
   left: 1.4rem;
   font-size: 1.3rem;
-  opacity: .4;
+  /* ▼ 투명도 opacity */
+  opacity: .4; 
 }
 
 .SignUp-card input:focus {
@@ -356,14 +358,19 @@
 }
 */
 
+/* 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  주소 영역
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .SignUp-card-form .Form-item select {
-  width: 50%;
+  width: 100%;
   padding: 10px;
   border: none;
   border-radius: 100px;
   background: rgba(255, 255, 255, .3);
   padding: 1rem 1.5rem;
   text-align: center;
+  letter-spacing: 2px;
 }
 
 /* Responsive */
