@@ -44,7 +44,8 @@ function Navbar2() {
             <nav ref={uavRef}>
                 <a href="/">HOME</a>
                 <a href="/Exam">TEST</a>
-                <a href="/MbtiTypes">BOARD</a>
+                <a href="/MbtiTypes">MBTI유형</a>
+                <a href="/Boarding">BOARD</a>
                 {(localId === 'admin') ? 
                     <a href="/AdminMemberInfo">My Page</a>
                     :  <a href="/mypage">My Page</a>
