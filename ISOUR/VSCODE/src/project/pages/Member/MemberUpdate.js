@@ -290,13 +290,13 @@ const [imageSrc, setImageSrc] = useState('');
               <td>
               <label>
                 {(`${member.gender}` === "남자") ?  
-                    <input type="radio" name="gender" value="남자" checked readOnly /> 
-                    : <input type="radio" name="gender" value="남자" readOnly />
+                    <input type="radio" name="gender" value="남자" checked disabled readOnly /> 
+                    : <input type="radio" name="gender" value="남자" disabled readOnly />
                 } 남자
 
                 {(`${member.gender}` === "여자") ?  
-                    <input type="radio" name="gender" value="여자" checked readOnly /> 
-                    : <input type="radio" name="gender" value="여자" readOnly />
+                    <input type="radio" name="gender" value="여자" checked disabled readOnly /> 
+                    : <input type="radio" name="gender" value="여자" disabled readOnly />
                 } 여자
               </label>
               </td>
@@ -304,7 +304,7 @@ const [imageSrc, setImageSrc] = useState('');
             <tr>
               <th>주소</th>
               <td>
-              <select defaultValue={member.region1} onChange={onChangeRegion1} readOnly>
+              <select defaultValue={member.region1} onChange={onChangeRegion1} disabled readOnly>
                   <option disabled >시도선택</option>
                   {sido.map((e) => (
                   <option key={e.sido} value={e.codeNm} >
@@ -312,7 +312,7 @@ const [imageSrc, setImageSrc] = useState('');
                   </option>
                   ))}
               </select>
-              <select defaultValue={member.region2} onChange={onChangeRegion2} readOnly>
+              <select defaultValue={member.region2} onChange={onChangeRegion2} disabled readOnly>
                   <option disabled >시/구/군선택</option>
                   
                   {sigugun

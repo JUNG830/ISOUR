@@ -246,8 +246,8 @@ const Quiz = (props) => {
                 <Num>{count + 1}번 문제</Num>
                 <p>{e.question}</p>
                 <OXcontainer>
-                  <OX onClick={onClickYes1}><div>{e.check_O}</div></OX>
-                  <OX onClick={onClickNo1}><div>{e.check_X}</div></OX>
+                  <OX><div onClick={onClickYes1}>{e.check_O}</div></OX>
+                  <OX><div onClick={onClickNo1}>{e.check_X}</div></OX>
                 </OXcontainer>
               </NumContainer>
             </>
@@ -399,7 +399,7 @@ const OXcontainer = styled.div`
     /* 원본 */
     position: absolute;
     /* position: relative; */
-    top: 0;
+    top: 200px;
     left: 0;
     z-index: 1;
     
@@ -408,6 +408,7 @@ const OX = styled.div`
     display: flex;  
     color: skyblue;
     width: 50%;
+    height: 500px;
     align-items: center;
     justify-content: center;
     font-weight: bold;
