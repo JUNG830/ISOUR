@@ -118,8 +118,8 @@ const MyPage = () => {
                 <tr>
                   <td colSpan="2" align='center' >
                     { member.fileName ?  
-                      <img src={`${DOMAIN}` + `${member.fileName}`} borderRadius='50%' width='150px' height='180px'/>
-                      : <img src={noImage} width='150px' borderRadius='50%' height='180px' />
+                      <img src={`${DOMAIN}` + `${member.fileName}`} style={{borderRadius:'70%', width: '200px'}}/>
+                      : <img src={noImage} style={{borderRadius:'70%', width: '200px'}} />
                     }</td>
                 </tr>
                 <tr>
