@@ -26,7 +26,9 @@ function Main() {
                 </div>
                 </div>
             </div>
+            <div className="Main-box-button1">
             <Link to="/login"><button className="Main-box-button2">START</button></Link>
+            </div>
         </div>
         
             );

@@ -129,18 +129,19 @@
 
   .Main-box-button2 {
     position: relative;
-    top: 20rem;
-    left: 50rem;
-    width: 300px;
+    top: 750px;
+    width: 600px;
+    height: 150px;
     border-radius: 100px;
     color: white;
-    font-size: large;
+    font-size: 80px;
     background: black;
-    padding: 1rem;
     cursor: pointer;
   }
 
-
+  .Main-box-button1 {
+    text-align: center;
+  }
 
   @keyframes fadein {
     0%{
