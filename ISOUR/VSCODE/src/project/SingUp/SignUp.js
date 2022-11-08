@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import TeamAPI from '../api/TeamAPI';
 import hangjungdong from "../hangjungdong";
-import '../CSS/Style_SignUp.css';
+import '../CSS/Style_Login.css';
 import logo from '../images/logo.png';
 
 // 정규식 조건
