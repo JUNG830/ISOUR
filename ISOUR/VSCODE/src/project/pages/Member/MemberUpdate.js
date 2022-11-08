@@ -4,7 +4,7 @@ import TeamAPI from '../../api/TeamAPI';
 import hangjungdong from "../../hangjungdong";
 import '../../CSS/Style_Login.css'
 import { Link } from 'react-router-dom';
-import noImage from '../../images/no_image.gif';
+import noImage from '../../images/no_image.gif'
 import '../../CSS/Style_Login.css'
 import axios from 'axios';
 
@@ -63,6 +63,8 @@ function MemberUpdate() {
   const [region2, setRegion2] = useState("");
   const [keySido, setKeySido] = useState("");
   const [MBTI, setMBTI] = useState("");
+  const [preview, setPreview] = useState("");
+
   
   const today = new Date();
 
@@ -70,14 +72,15 @@ function MemberUpdate() {
   const [isGender, setIsGender] = useState(false);
   const [isRegion1, setIsRegion1] = useState(false);
   const [isRegion2, setIsRegion2] = useState(false);
-  const [isFileUP, setIsFileUp] = useState(false);
+  // 프로필 사진 추가 여부 확인
+  const [isFileUP, setIsFileUp] = useState(false); 
 
   // 파일 업로드 관련 함수
-  const onFileUpload = (e) => {
-    SetFiles(e.target.files[0]);
-    console.log("이거!" + files);
-    setIsFileUp(true)
-  }
+  // const onFileUpload = (e) => {
+  //   SetFiles(e.target.files[0]);
+  //   console.log("이거!" + files);
+  //   setIsFileUp(true)
+  // }
 
   const handleClick = () => {
     const formData = new FormData();
@@ -210,18 +213,56 @@ const onChangeName = e => {
     //   console.log("잘못 입력한 값이 있거나 입력되지 않은 값이 있어요.");
     //   alert('입력된 값을 확인하세요.');
   }
+
+  // 이미지가 없을 때 or 파일 추가시 미리보기
+  // const [image, setImage] = useState({noImage});
+
+
   
 // 이미지 업로드 input의 onChange
-  // const saveImgFile = (e) => {
-  //   const file = imgRef.current.files[0];
-  //   const reader = new FileReader();
-  //     reader.readAsDataURL(file);
-  //     reader.onloadend = () => {
-  //         SetFiles(reader.result);
-  //      };
-  //   // SetFiles(e.target.files[0]);
-  //   // console.log("이거!" + files);
-  // };
+// const saveImgFile = (file) => {
+//   // const file = e.target.files[0];
+//   const reader = new FileReader();
+//   reader.readAsDataURL(file);
+//   return new Promise((resolve) => {
+//     reader.onload = () => {
+//       setPreview(reader.result);
+//       resolve();
+//     };
+//   });
+// };
+
+// const saveImgFile = (e) => {
+//   // const file = e.target.files[0];
+//   e.preventDefault();
+//   if(e.target.files[0]){
+//     // 새로운 이미지를 올리면 createObjectURL()을 통해 생성한 기존 URL을 폐기
+//     URL.revokeObjectURL(image.preview_URL);
+//     const preview_URL = URL.createObjectURL(e.target.files[0]);
+//     setImage(() => (
+//       {
+//         image_file: e.target.files[0],
+//         preview_URL: preview_URL
+//       }
+//     ))
+//   }
+// };
+
+const [imageSrc, setImageSrc] = useState('');
+
+  const encodeFileToBase64 = (fileBlob) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(fileBlob);
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImageSrc(reader.result);
+        resolve();
+      };
+      SetFiles(fileBlob);
+      console.log("이거!" + files);
+      setIsFileUp(true)
+    });
+  };
 
   
 
@@ -230,6 +271,7 @@ const onChangeName = e => {
        {memberInfo.map(member => (
           <div key={member.id}>
         <table className='memberUpdate-table'>
+          
           <colgroup> 
             <col width="50%" /> 
             <col width="50%" /> 
@@ -241,19 +283,25 @@ const onChangeName = e => {
             </tr>
             <tr>
               <td colSpan="2" align='center' >
-                <form className='profileImg-label' >     
-                  { member.fileName ?  
-                    <img src={`${DOMAIN}` + `${member.fileName}`} style={{borderRadius:'50%', width: '150px'}} />
-                    : <img src={noImage} style={{borderRadius:'50%', width: '150px'}} />
-                  }
-                  <label htmlFor='image'>
-                  <input className="profileImg-input" type='file' display='none' id='image' accept='image/*' onChange={onFileUpload} />
-                  <br />
-                  <br />
-                   프로필사진 추가 
-                  </label>         
+                  { isFileUP ?  
+                     <img src={imageSrc} style={{borderRadius:'70%', width: '200px'}} />
+                    : member.fileName ?
+                           <img src={`${DOMAIN}` + `${member.fileName}`} style={{borderRadius:'70%', width: '200px'}} />
+                           : <img src={noImage} style={{borderRadius:'70%', width: '200px'}} /> 
+                  } 
+                  {/* <img src={imageSrc} style={{borderRadius:'70%', width: '200px'}} /> */}
+              </td>   
+            </tr>           
+            <tr>
+              <td colSpan="2" align='center' >
+                <form className='profileImg-label' >
+                  <label className='profileImg-label'>
+                    <input className="profileImg-input" type='file' display='none' id='image' accept='image/*' onChange={(e) => {
+        encodeFileToBase64(e.target.files[0])}} />
+                    프로필사진 추가
+                  </label> 
                 </form>
-              </td>
+              </td> 
             </tr>
             <tr>
               <th>이름</th>
@@ -270,7 +318,7 @@ const onChangeName = e => {
             <tr>
               <th>생년월일</th>
               <td><input type="date" value={member.birth} readOnly />
-                  <span>만 {member.age}세</span>
+                  <span readOnly>만 {member.age}세</span>
               </td>
             </tr>
             <tr>
@@ -292,7 +340,7 @@ const onChangeName = e => {
             <tr>
               <th>주소</th>
               <td>
-              <select defaultValue={member.region1} onChange={onChangeRegion1}>
+              <select defaultValue={member.region1} onChange={onChangeRegion1} readOnly>
                   <option disabled >시도선택</option>
                   {sido.map((e) => (
                   <option key={e.sido} value={e.codeNm} >
@@ -300,7 +348,7 @@ const onChangeName = e => {
                   </option>
                   ))}
               </select>
-              <select defaultValue={member.region2} onChange={onChangeRegion2}>
+              <select defaultValue={member.region2} onChange={onChangeRegion2} readOnly>
                   <option disabled >시/구/군선택</option>
                   
                   {sigugun
