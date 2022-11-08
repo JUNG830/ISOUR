@@ -112,7 +112,8 @@ function SignUp() {
     }
   };
   
-  const onClickIdCheck = async() => {
+  const onClickIdCheck = async(e) => {
+    e.preventDefault();
     setIsId_check(false);
     console.log("\n\n중복확인 버튼 눌렀어요.");
 
@@ -126,8 +127,10 @@ function SignUp() {
       console.log("memberCheck.data.result : " + memberCheck.data.result);
       if(memberCheck.data.result === true) {
         setId("");
+        alert("이미 가입되어 있는 ID 입니다.");
         console.log("이미 가입되어 있는 ID 입니다.");
       } else {
+        alert("사용 가능한 ID 입니다.");
         console.log("사용 가능한 ID 입니다.");
       }
     }
@@ -245,7 +248,8 @@ function SignUp() {
     setRegion2(e.target.value);
   }
 
-  const onClickButton = async() => {
+  const onClickButton = async(e) => {
+    e.preventDefault();
     console.log("\n\n★★★★★★★★★★");
     console.log("회원가입 버튼 눌렀어요.");
     console.log("isName : " + isName);
@@ -307,7 +311,7 @@ function SignUp() {
             <div className="Form-item">
               <span className="Form-item-icon material-symbols-rounded">account_circle</span>
               <input type="text" className='Input-ID' placeholder="아이디" value={id} onChange={onChangeId} required/>
-              <button onClick={onClickIdCheck}  className='Input-ID-check' required> 중복확인 </button>
+              <button onClick={onClickIdCheck} className='Input-ID-check' required> 중복확인 </button>
               <Msg>
                 {showReqId && req_id}
                 {showGuideId && guide_id}
