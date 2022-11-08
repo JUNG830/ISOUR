@@ -1,6 +1,6 @@
 .Main-container {
     display: flex;
-    height: 1650px;
+    height: 4000px;
     align-items: center;
     display: block;
     box-sizing: border-box;
@@ -10,7 +10,7 @@
   }
 
   .Main-container1 {
-    height: 600px;
+    height: 1500px;
     display: block;
     box-sizing: border-box;
     border:0px solid;
@@ -18,7 +18,7 @@
   }
 
   .Main-container2 {
-    height: 600px;
+    height: 1500px;
     display: block;
     box-sizing: border-box;
     border:0px solid;
@@ -27,12 +27,14 @@
 
   .Main-container3 {
     position: relative;
+    height: 1000;
     bottom: 130px;
   }
-
+  .Main_box0 {
+    text-align: center;
+  }
   .Main-box1 {
     position: relative;
-    left: 42.5rem;
     top: 3rem;
     border-radius: 100px;
     background-color: #29335c;
@@ -43,18 +45,27 @@
   }
 
   .Main-font {
+    animation: 0.8s ease-in-out fadein;
     position: relative;
-    left: 128px;
-    font-size: 60px;
+    margin: 0 auto;
+    right: 10px;
+    width: 1000px;
+    top: 100px;
+    font-size: 100px;
     color: white;
     font-weight: bold;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 100px;
+    border-color: rgba(76, 76, 76, 0.7);
+    background-color: rgba(76, 76, 76, 0.7);
   }
 
   .Main-box-font2 {
     position: relative;
-    left: 33.5rem;
-    top: 14rem;
-    font-size: 40px;
+    text-align: center;
+    top:500px;
+    font-size: 80px;
     color:#29335c;
     font-weight: bold;
     overflow: hidden;
@@ -71,14 +82,12 @@
   .Main-box2-font1 {
     animation: 0.6s ease-in-out loadEffect1;
     position: relative;
-    left: 44.5rem;
     top: -20px;
-    font-size: 350px;
+    left: 10px;
+    font-size: 600px;
     font-family: 'Times New Roman', Times, serif;
     color:white;
-    overflow: hidden;
     font-weight: bold;
-    width: 500px;
   }
 
   @keyframes loadEffect1 {
@@ -98,6 +107,7 @@
 
   .Main-box2-font2 {
     animation: 1.0s ease-in-out loadEffect1;
+    font-size: 80px;
     position: relative;
     top: -100px;
   }
@@ -105,21 +115,23 @@
   .Main-box2-font3 {
     animation: 1.5s ease-in-out loadEffect1;
     position: relative;
+    font-size: 80px;
     top:-100px;
   }
 
   .Main-box3 {
     position: relative;
     text-align: center;
-    top: 13rem;
+    top: 50rem;
     font-size: 40px;
     color:black;
     font-weight: bold;
+    font-size: 80px;
   }  
 
   .Main-box-button2 {
     position: relative;
-    top: 20rem;
+    top: 50rem;
     left: 50rem;
     width: 300px;
     border-radius: 100px;
