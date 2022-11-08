@@ -1,11 +1,11 @@
-DROP TABLE I_MEMBER;
-DROP TABLE dleldi;
-DROP TABLE rlfehddl;
+
 
 SELECT * FROM I_MEMBER;
 SELECT * FROM dleldi;
 SELECT * FROM rldyal;
 COMMIT;
+
+
 // 전체 회원 테이블
 CREATE TABLE I_MEMBER (
     FILEPATH    VARCHAR2(200),
@@ -20,6 +20,8 @@ CREATE TABLE I_MEMBER (
     REGION2     VARCHAR2(30),
     MBTI        VARCHAR2(10)
 );
+
+
 // 회원가입시 해당 ID로 쪽지 테이블 생성
 CREATE TABLE rldyal (
     ID          VARCHAR2(30),
@@ -41,3 +43,6 @@ rollback;
 
 INSERT INTO dleldi (ID, CONTENT) VALUES(?, ?)
 
+DROP TABLE I_MEMBER;
+DROP TABLE dleldi;
+DROP TABLE rlfehddl;

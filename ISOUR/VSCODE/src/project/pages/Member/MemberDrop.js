@@ -1,11 +1,11 @@
 
 import { useState, useEffect } from 'react';
-import TeamAPI from '../api/TeamAPI'
+import TeamAPI from '../../api/TeamAPI'
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
-import imgHome from '../images/home_button.png'
-import Modal from '../util/Modal';
-import Drop from '../CSS/Drop.css'
+import imgHome from '../../images/home_button.png'
+import Modal from '../../util/Modal';
+import Drop from '../../CSS/Drop.css'
 import { Button} from 'react-bootstrap';
 
 const MemberDrop = () => {
