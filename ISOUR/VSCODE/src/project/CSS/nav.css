@@ -33,7 +33,7 @@ header {
     display: flex;
     margin: 0;
     padding: 0;
-    align-items: center;
+    align-items: center;    
 }
 
 .logo img {
@@ -79,7 +79,7 @@ header .nav-btn {
     margin-right: 2rem;
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1024px) {
     header .nav-btn {
         visibility: visible;
         opacity: 1;
@@ -115,7 +115,7 @@ header .nav-btn {
         justify-content: center;
         align-items: center;
     } */
-
+/* 
     nav .nav-colse-btn {
         position: absolute;
         top: 1.5rem;
@@ -124,5 +124,5 @@ header .nav-btn {
 
     nav a {
         font-size: 1rem;
-    }
+    } */
 }
