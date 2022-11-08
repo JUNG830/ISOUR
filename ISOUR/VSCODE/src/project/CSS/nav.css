@@ -79,7 +79,7 @@ header .nav-btn {
     margin-right: 2rem;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1300px) {
     header .nav-btn {
         visibility: visible;
         opacity: 1;
