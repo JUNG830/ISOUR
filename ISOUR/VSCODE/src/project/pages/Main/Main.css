@@ -27,7 +27,6 @@
 
   .Main-container3 {
     position: relative;
-    height: 1000;
     bottom: 130px;
   }
   .Main_box0 {
@@ -35,6 +34,7 @@
   }
   .Main-box1 {
     position: relative;
+    left: 42.5rem;
     top: 3rem;
     border-radius: 100px;
     background-color: #29335c;
@@ -45,27 +45,18 @@
   }
 
   .Main-font {
-    animation: 0.8s ease-in-out fadein;
     position: relative;
-    margin: 0 auto;
-    right: 10px;
-    width: 1000px;
-    top: 100px;
-    font-size: 100px;
+    left: 128px;
+    font-size: 60px;
     color: white;
     font-weight: bold;
-    text-align: center;
-    border: 1px solid;
-    border-radius: 100px;
-    border-color: rgba(76, 76, 76, 0.7);
-    background-color: rgba(76, 76, 76, 0.7);
   }
 
   .Main-box-font2 {
     position: relative;
-    text-align: center;
-    top:500px;
-    font-size: 80px;
+    left: 33.5rem;
+    top: 14rem;
+    font-size: 40px;
     color:#29335c;
     font-weight: bold;
     overflow: hidden;
@@ -83,8 +74,7 @@
     animation: 0.6s ease-in-out loadEffect1;
     position: relative;
     top: -20px;
-    left: 10px;
-    font-size: 600px;
+    font-size: 350px;
     font-family: 'Times New Roman', Times, serif;
     color:white;
     font-weight: bold;
@@ -107,7 +97,6 @@
 
   .Main-box2-font2 {
     animation: 1.0s ease-in-out loadEffect1;
-    font-size: 80px;
     position: relative;
     top: -100px;
   }
@@ -115,23 +104,21 @@
   .Main-box2-font3 {
     animation: 1.5s ease-in-out loadEffect1;
     position: relative;
-    font-size: 80px;
     top:-100px;
   }
 
   .Main-box3 {
     position: relative;
     text-align: center;
-    top: 50rem;
+    top: 13rem;
     font-size: 40px;
     color:black;
     font-weight: bold;
-    font-size: 80px;
   }  
 
   .Main-box-button2 {
     position: relative;
-    top: 50rem;
+    top: 20rem;
     left: 50rem;
     width: 300px;
     border-radius: 100px;
