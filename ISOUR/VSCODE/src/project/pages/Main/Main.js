@@ -7,9 +7,10 @@ function Main() {
     return(
         <div className="Main-container">
             <div className="Main-container1">
-                <div className="Main-box1">
+                <div className="Main-box0">
                     <div className="Main-font">MBTISOUR</div>
                 </div>
+
                 <div className="Main-box-font2">"인간들은 제각각 다른 성격을 가지고 있습니다."</div>
             </div>
             <div className="Main-container2">
