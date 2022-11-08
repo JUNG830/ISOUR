@@ -9,9 +9,12 @@ import { Link } from "react-router-dom";
 import { Button} from 'react-bootstrap';
 
 const MemberDrop = () => {
-  const localId = window.localStorage.getItem("userId");
+  // ▼ 로그인 안 되어 있으면 탈퇴 페이지 접근 불가, 로그인 페이지로 이동
   const isLogin = window.localStorage.getItem("isLogin");
-  if(isLogin === "FALSE") window.location.replace("/");
+  if(isLogin === "FALSE") window.location.replace("/login");
+  // ▲ 로그인 안 되어 있으면 탈퇴 페이지 접근 불가, 로그인 페이지로 이동
+
+  const localId = window.localStorage.getItem("userId");
 
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState('');
