@@ -2,10 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import TeamAPI from '../../api/TeamAPI';
 import hangjungdong from "../../hangjungdong";
-import '../../CSS/Style_Login.css'
+import '../../CSS/MyPage.css'
 import { Link } from 'react-router-dom';
 import noImage from '../../images/no_image.gif'
-import '../../CSS/Style_Login.css'
 import axios from 'axios';
 
 // 정규식 조건
@@ -63,8 +62,6 @@ function MemberUpdate() {
   const [region2, setRegion2] = useState("");
   const [keySido, setKeySido] = useState("");
   const [MBTI, setMBTI] = useState("");
-  const [preview, setPreview] = useState("");
-
   
   const today = new Date();
 
@@ -72,6 +69,7 @@ function MemberUpdate() {
   const [isGender, setIsGender] = useState(false);
   const [isRegion1, setIsRegion1] = useState(false);
   const [isRegion2, setIsRegion2] = useState(false);
+
   // 프로필 사진 추가 여부 확인
   const [isFileUP, setIsFileUp] = useState(false); 
 
@@ -214,40 +212,9 @@ const onChangeName = e => {
     //   alert('입력된 값을 확인하세요.');
   }
 
-  // 이미지가 없을 때 or 파일 추가시 미리보기
-  // const [image, setImage] = useState({noImage});
 
 
-  
-// 이미지 업로드 input의 onChange
-// const saveImgFile = (file) => {
-//   // const file = e.target.files[0];
-//   const reader = new FileReader();
-//   reader.readAsDataURL(file);
-//   return new Promise((resolve) => {
-//     reader.onload = () => {
-//       setPreview(reader.result);
-//       resolve();
-//     };
-//   });
-// };
-
-// const saveImgFile = (e) => {
-//   // const file = e.target.files[0];
-//   e.preventDefault();
-//   if(e.target.files[0]){
-//     // 새로운 이미지를 올리면 createObjectURL()을 통해 생성한 기존 URL을 폐기
-//     URL.revokeObjectURL(image.preview_URL);
-//     const preview_URL = URL.createObjectURL(e.target.files[0]);
-//     setImage(() => (
-//       {
-//         image_file: e.target.files[0],
-//         preview_URL: preview_URL
-//       }
-//     ))
-//   }
-// };
-
+// 프로필 사진 미리보기
 const [imageSrc, setImageSrc] = useState('');
 
   const encodeFileToBase64 = (fileBlob) => {
@@ -265,9 +232,8 @@ const [imageSrc, setImageSrc] = useState('');
   };
 
   
-
   return (
-    <div className='Container'>
+    <div className='MyPage-Container'>
        {memberInfo.map(member => (
           <div key={member.id}>
         <table className='memberUpdate-table'>
@@ -289,15 +255,13 @@ const [imageSrc, setImageSrc] = useState('');
                            <img src={`${DOMAIN}` + `${member.fileName}`} style={{borderRadius:'70%', width: '200px'}} />
                            : <img src={noImage} style={{borderRadius:'70%', width: '200px'}} /> 
                   } 
-                  {/* <img src={imageSrc} style={{borderRadius:'70%', width: '200px'}} /> */}
               </td>   
             </tr>           
             <tr>
               <td colSpan="2" align='center' >
                 <form className='profileImg-label' >
                   <label className='profileImg-label'>
-                    <input className="profileImg-input" type='file' display='none' id='image' accept='image/*' onChange={(e) => {
-        encodeFileToBase64(e.target.files[0])}} />
+                    <input className="profileImg-input" type='file' display='none' id='image' accept='image/*' onChange={(e) => {encodeFileToBase64(e.target.files[0])}} />
                     프로필사진 추가
                   </label> 
                 </form>

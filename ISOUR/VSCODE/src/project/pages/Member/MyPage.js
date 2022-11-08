@@ -4,6 +4,8 @@ import nowGo from '../../images/short_cut.png'
 import noImage from '../../images/no_image.gif';
 import { Link } from 'react-router-dom';
 import '../../CSS/Style_Login.css';
+import '../../CSS/MyPage.css'
+
 
 const MyPage = () => {
   // ▼ 로그인 안 되어 있으면 로그인 페이지로
@@ -64,35 +66,11 @@ const MyPage = () => {
     window.location.replace("/MessageList");
   }
 
-// 파일 업로드 관련 코드
-//   const formElem = document.querySelector('form');
 
-//   window.onload = formElem.addEventListener('submit', (e) => {
-//     // on form submission, prevent default
-//     e.preventDefault();
-  
-//     // construct a FormData object, which fires the formdata event
-//     new FormData(formElem);
-//   });
-
-// formElem.addEventListener('formdata', (e) => {
-//     console.log('formdata fired');
-  
-    // Get the form data from the event object
-    // const data = e.formData;
-    // for (const value of data.values()) {
-    //   console.log(value);
-    // }
-  
-    // submit the data via XHR
-  //   const request = new XMLHttpRequest();
-  //   request.open("POST", "/UploadService");
-  //   request.send(data);
-  // });
 
   return(
     <div>
-      <div className="Container">
+      <div className="MyPage-Container">
         <div className="mainhead">
           
           {/* admin 계정일 때만 회원목록조회 버튼 생성 */}
