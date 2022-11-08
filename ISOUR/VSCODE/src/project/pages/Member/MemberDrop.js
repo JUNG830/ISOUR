@@ -1,10 +1,12 @@
 
 import { useState, useEffect } from 'react';
-import TeamAPI from '../../api/TeamAPI';
+import TeamAPI from '../api/TeamAPI'
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
-import imgHome from '../../images/home_button.png'
-import Modal from '../../util/Modal';
+import imgHome from '../images/home_button.png'
+import Modal from '../util/Modal';
+import Drop from '../CSS/Drop.css'
+import { Button} from 'react-bootstrap';
 
 const MemberDrop = () => {
   const localId = window.localStorage.getItem("userId");
@@ -53,27 +55,31 @@ const MemberDrop = () => {
   if(loading) { return <p>대기중...</p> }
   
   return(
-    <div className="Container">
+    <div className="box-main">
       {/* 아이디 */}
-      <div className='field-wrap'>
-        <div className='input-field'>
+      <div className='box-box'>
+        <div className='box-id'>
           {/* <span style={{display: 'inline-block', width: 150}}>아이디</span> */}
-          <p>내 아이디 : {localId}</p>
+          <p>회원 아이디 : {localId}</p>
         </div>
-      </div>
+      
 
       {/* 비밀번호 */}
       <div className='field-wrap'>
-        <div className='input-field'>
-          <span style={{display: 'inline-block', width: 150}}>비밀번호</span>
-          <input type="password" value={password} onChange={onChangePassword} />
+        <div className='box-id'>
+          <span style={{display: 'inline-block', width: 150}}>비밀번호 : </span>
+          <input type="password" placeholder = {"비밀번호를 입력해주세요!"} value={password} onChange={onChangePassword} />
         </div>
       </div>
+      <hr></hr>
+      <span className='box-span'>해당 아이디로 재가입이 불가능합니다.</span>
+      <span className='box-span'>탈퇴시 모든 정보가 삭제되며 복구가 어렵습니다.</span>
 
       {/* 탈퇴하기 */}
       <div className='field-wrap'>
-        <div className='input-field'>
-          <button onClick={onTest}>탈퇴하기</button>
+        <div className='btn-id'>
+        <button type="button" class="btn btn-outline-primary" onClick={onTest}>탈퇴하기</button>
+        </div>
         </div>
       </div>
     </div>
