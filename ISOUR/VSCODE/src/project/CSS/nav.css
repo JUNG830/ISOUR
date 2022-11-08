@@ -49,12 +49,14 @@ header {
 
 nav {
     justify-content: center;
+    
 }
 
 nav a {
     margin: 0 2rem;
-    margin-left: 120px;
+    margin-left: 80px;
     font-size: 20px;
+    text-shadow: 2px 2px 2px black;
     color: var(--textColor);
     text-decoration: none;
     text-align: center;

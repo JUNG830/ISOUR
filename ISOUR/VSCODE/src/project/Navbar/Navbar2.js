@@ -50,7 +50,7 @@ function Navbar2() {
                     <a href="/AdminMemberInfo">My Page</a>
                     :  <a href="/mypage">My Page</a>
                 }
-                <button onClick={onClickLogout}>로그아웃</button>
+               
                 {/* 닫기 버튼 */}
                 <button className="nav-btn nav-colse-btn" onClick={showNavBar}>
                    <FaTimes /> 
@@ -60,6 +60,7 @@ function Navbar2() {
             <button className="nav-btn" onClick={showNavBar}>
                 <FaBars />
             </button>
+            <button type="button" class="btn btn-outline-info" onClick={onClickLogout} style={{float : "right"}}>로그아웃</button>
         </header>
     );
 }
