@@ -142,7 +142,7 @@ const MessageList = () => {
   return (
     <>
       <SignUpModal modalName={name} modalContent={content} show={signUpModalOn} onHide={() => setSignUpModalOn(false)} />
-      <div className='Container'>
+      <div className='Login-Container'>
         {/* 모달 테스트 중 */}
 
         <div className='outbox'>
