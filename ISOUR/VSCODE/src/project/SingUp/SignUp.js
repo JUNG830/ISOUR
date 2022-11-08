@@ -346,41 +346,47 @@ function SignUp() {
 
         {/* 성별 */}
             <div className="Form-item">
-            {/* <span className="Form-item-icon material-symbols-rounded">성별</span> */}
-              <label className='Label-gender'>
-                <input type="radio" name="gender" value="남자" onChange={onChangeRadio} />남자<span></span>
-              </label>
-              <label className='Label-gender'>
-                <input type="radio" name="gender" value="여자" onChange={onChangeRadio} />여자<span></span>
-              </label>
+            <div className='Form-item-Gender'>
+              <span className="Form-item-icon material-symbols-rounded">touch_app</span>
+                <label className='Label-gender'>
+                  <input type="radio" name="gender" value="남자" onChange={onChangeRadio} />
+                  <span>남자</span>
+                </label>
+                <label className='Label-gender'>
+                  <input type="radio" name="gender" value="여자" onChange={onChangeRadio} />
+                  <span>여자</span>
+                </label>
+              </div>
               <Msg></Msg>
             </div>
 
 
         {/* 주소 */}
           <div className="Form-item">
-            <span className="Form-item-icon material-symbols-rounded">home</span>
-            <select onChange={onChangeRegion1}>
-              <option disabled selected>시도선택</option>
-              {sido.map((e) => (
-                <option key={e.sido} value={e.codeNm}>
-                  {e.codeNm}
-                </option>
-              ))}
-            </select>
-            <select onChange={onChangeRegion2}>
-              <option disabled selected>시/구/군선택</option>
-              
-              {sigugun
-              // 필터함수를 사용하여 배열을 필터링하여 군/구를 불러옴
-                .filter((e) => e.sido === keySido)
-                .map((e) => (
-                  <option key={e.sigugun} value={e.codeNm}>
+            <div className='Form-item-Address'>
+              <span className="Form-item-icon material-symbols-rounded">home</span>
+              <select className='Select-Sido' onChange={onChangeRegion1}>
+                <option disabled selected>시도선택</option>
+                {sido.map((e) => (
+                  <option key={e.sido} value={e.codeNm}>
                     {e.codeNm}
                   </option>
                 ))}
-            </select>
-            <Msg>주소를 선택하세요</Msg>
+              </select>
+              <select className='Select-SiGuGun' onChange={onChangeRegion2}>
+                <option disabled selected>시/구/군선택</option>
+                
+                {sigugun
+                // 필터함수를 사용하여 배열을 필터링하여 군/구를 불러옴
+                  .filter((e) => e.sido === keySido)
+                  .map((e) => (
+                    <option key={e.sigugun} value={e.codeNm}>
+                      {e.codeNm}
+                    </option>
+                  ))}
+              </select>
+            </div>
+              <Msg>주소를 선택하세요</Msg>
           </div>
 
         {/* 회원가입 */}
