@@ -14,7 +14,10 @@ const AdminMemberInfo = () => {
   const [memberInfo, setMemberInfo] = useState('');
   const [loading, setLoading] = useState(false);
 
+
+
   const Styled = styled.div`
+  .class {}
     overflow: scroll;
     &::-webkit-scrollbar{
       /*가로 스크롤 넓이*/
@@ -75,25 +78,25 @@ const AdminMemberInfo = () => {
   }
 
   return (
-    <div className='Container'>
-      <div className='outbox'>
-            <div className='name'>회원 정보</div>
-        <Styled>
-          <table className='tableContainer'>
+    <div className='Login-Container'>
+      <div className='admin-outbox'>
+        <div className='name'>회원 정보</div>
+        <div className='Styled'>
+          <table className='admin-table'>
             {/* F:\KH\TOTAL-1\ISOUR_HJ\ISOUR\Eclipse\src\main\webapp\UPLOADIMG\admin.jpg */}
             {/* <img src={ require('F:/KH/TOTAL-1/ISOUR_HJ/ISOUR/Eclipse/src/main/webapp/UPLOADIMG/admin.jpg').default } width='80px' height='100px'/> */}
             {/* <img src={aaa} width='80px' height='100px' /> */}
-            <tr className='tr1'>
+            <tr className='admin-tr1'>
               <th>사진(IMAGE)</th>
               <th>이름(NAME)</th>
-              <th>아이디(ID)</th>
+              <th className='admin-tbid'>아이디(ID)</th>
               <th>비밀번호(PASSWORD)</th>
               <th>생년월일(BIRTH)</th>
               <th>나이(AGE)</th>
               <th>성별(GENDER)</th>
               <th>시도(REGION1)</th>
               <th>시/구/군(REGION2)</th>
-              <th>MBTI</th>
+              <th className='admin-tbmbti'>MBTI</th>
             </tr>
             {memberInfo && memberInfo.map(member => (  //  npm i babel-eslint -D  설치
               <tr key={member.name}>
@@ -123,11 +126,11 @@ const AdminMemberInfo = () => {
               </tr>
             ))}
           </table>
-        </Styled>
-          <Link to="/" className="link-box">
-            <img className="link-img" src={imgHome} alt="HOME" />
-            <span>HOME으로 이동</span>
-          </Link>
+        </div>
+        <Link to="/" className="admin-link-box">
+          <img className="link-img" src={imgHome} alt="HOME" />
+          <span>HOME</span>
+        </Link>
       </div>
     </div>
   );

@@ -61,15 +61,16 @@
     color: white;
     background-color: #2e3359;
     position: relative;
-
     z-index: 3;
+    bottom : 5px;
+    text-align: center;
 }
 
 
 
 .tr1{
     position: sticky;
-    top: 0px;
+    
 }
 
 
@@ -79,7 +80,6 @@
     bottom: 100px;
 }
 .outbox button {
-    
     margin: 10px;
 }
 
@@ -93,7 +93,7 @@
         #2e3359,
         #2e3359 100%
     );
-    border-radius: 1000px;
+    
     color: white;
     cursor: pointer;
     box-shadow: 6px 6px 12px #2e3359;
