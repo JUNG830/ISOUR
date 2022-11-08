@@ -44,7 +44,6 @@ const MessageList = () => {
       border-radius:6px;
     }
     height: 500px;
-    padding: 0px 5px;
     `;
 
 
