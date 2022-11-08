@@ -2,8 +2,11 @@
 import styled from 'styled-components';
 // import TeamAPI from '../api/TeamAPI';
 import { useEffect, useState } from "react";
-import "./Exam.css";
+import "../Exam/Exam.css";
 import TeamAPI from '../../api/TeamAPI';
+import reset from '../../CSS/reset.css';
+import mbti from '../../images/mbti.jpg';
+import start from '../../images/start.png';
 // import '../CSS/Style_Login.css';
 
 // QuizApp 의 Line 44 에서 props를 넘겨받음.
@@ -340,11 +343,14 @@ const Exam = () => {
 
   return (
     <div>
+      
       {/* mode 가 main 일 때 */}
       {states.mode === 'start'
         ?
         <div>
-          <button onClick={() => { changeMode('quiz') }}>검사 시작하기</button>
+      <img className='mbti-btn-img' src={mbti}></img>
+
+          <button className='btn-exam-start'  onClick={() => { changeMode('quiz') }}>검 사 시 작</button>
         </div>
         : null
       }
