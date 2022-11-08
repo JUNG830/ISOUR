@@ -2,6 +2,8 @@ import { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import TeamAPI from '../api/TeamAPI';
 import hangjungdong from "../hangjungdong";
+import '../CSS/Style_SignUp.css';
+import logo from '../images/logo.png';
 
 // 정규식 조건
 
@@ -14,11 +16,13 @@ const regexPw = /^\w{8,20}$/;
 
 
 const Msg = styled.div`
-  color: white;
-  font-size: .8em;
+  color: orangered;
+  font-size: calc(1rem * .8);
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  height: 1.5rem;
+  margin-right: 20px;
+  align-items: center; // 세로 기준으로 가운데 정렬
 `;
 
 
@@ -210,8 +214,10 @@ function SignUp() {
 
   const onChangeRadio = e => {
     let temp_sex = e.target.value;
+    console.log(temp_sex);
     setGender(temp_sex);
     setIsGender(true);
+
   };
   
   const onChangeRegion1 = (e) => {
@@ -272,118 +278,115 @@ function SignUp() {
     }
   }
 
-  return (
+  return ( 
     <div className='Container'>
-      {/*회원 가입 텍스트*/}
-      <div className='MainName'>
-        <h2>회원가입</h2>
-      </div>
-      <div className='MainGrid'>
-        <span className='MainPoint'>*필수입력사항</span>
+      <div className='SignUp-card-container'>
+      <div className="SignUp-card">
         
-      </div>
-    {/* 이름 */}
-    <div className='LoginMain'>
-      <div className='field-wrap'>
-        <div className='input-field'>
-          <div className='input-block'>
-            <span className='TitleName' style={{display: 'inline-block', width: 150}}>이름</span>
-            <input className='inputCheck'type="text" value={name} placeholder='이름을 입력 해주세요' onChange={onChangeName} required />
+        <div className="SignUp-card-logo">
+          <img src={logo} alt="logo" />
+        </div>
+
+        <div className="SignUp-card-header">
+            <h1>Sign Up</h1>
+            <div>회원정보를 입력해주세요</div>
           </div>
-        </div>
-        <Msg>
-          {showReqName && req_name}
-        </Msg>
-      </div>
 
-    {/* 아이디 */}
-      <div className='field-wrap'>
-          <span className='TitleName' style={{display: 'inline-block', width: 150}}>아이디</span>
-          <input className='inputCheck' type="text" value={id} placeholder='아이디를 입력 해주세요' onChange={onChangeId} required/>
-          <button className='IdCheckBtn' onClick={onClickIdCheck} required>중복확인</button>
-        <Msg>
-          {showReqId && req_id}
-          {showGuideId && guide_id}
-          {showAcceptId && accept_id}
-        </Msg>
-    
-      </div>
-      
-    {/* 비밀번호 */}
-      <div className='field-wrap'>
-        <div className='input-field'>
-          <span className='TitleName' style={{display: 'inline-block', width: 150}}>비밀번호</span>
-          <input className='inputCheck' type="password" value={password} placeholder='비밀번호를 입력 해주세요' onChange={onChangePassword} />
-        </div>
-        <Msg>
-          {showGuidePassword && guide_password}
-          {showAcceptPassword && accept_password}
-        </Msg>
+        <form action="" className="SignUp-card-form">
+        {/* 이름 */}
+            <div className="Form-item">
+              {/* <span style={{display: 'inline-block', width: 150}}>이름</span> */}
+              <span className="Form-item-icon material-symbols-rounded">person</span>
+              <input type="text" className='Input-Name' placeholder="이름" value={name} onChange={onChangeName} required />
+              <Msg>
+                {showReqName && req_name}
+              </Msg>
+            </div>
 
-        <div className='input-field'>
-          <span className='TitleName' style={{display: 'inline-block', width: 150}}>비밀번호 확인</span>
-          <input className='inputCheck' type="password" value={password_check} placeholder='비밀번호 확인' onChange={onChangePassword_check} disabled={!regexPw.test(password)}/>
-          </div>
-        <Msg>
-          {showErrorPasswordCheck && error_password_check}
-          {showAcceptPasswordCheck && accept_password_check}
-        </Msg>
-  
-      </div>
-
-    {/* 생년월일 */}
-      <div className='field-wrap'>
-        <div className='input-field'>
-          <span className='TitleName' style={{display: 'inline-block', width: 150}}>생년월일</span>
-          <input className='Date'type="date" value={birth} onChange={onChangeBirth} />
-          <span className='Age'>만 {age}세</span>
-        </div>
-      </div>
-
-    {/* 성별 */}
-      <div className='field-wrap'>
-        <div className='input-field'>
-        <span className='TitleName' style={{display: 'inline-block', width: 150}}>성별</span>
-          <label className='sex-man'>
-            <input type="radio" name="sex" value="남자" onChange={onChangeRadio} /> 남자
-          </label>
-          <label className='sex-woman'>
-            <input type="radio" name="sex" value="여자" onChange={onChangeRadio} /> 여자
-          </label>
-        </div>
-      </div>
-
-    {/* 주소 */}
-    <div className='field-wrap'>
-      <div className='input-field'>
-        <div className='TitleName'>주소</div>
-        <select className='AddrSelect' onChange={onChangeRegion1}>
-          <option disabled selected>시도선택</option>
-          {sido.map((e) => (
-            <option key={e.sido} value={e.codeNm}>
-              {e.codeNm}
-            </option>
-          ))}
-        </select>
-        <select className='AddrSelect2' onChange={onChangeRegion2}>
-          <option disabled selected>시/구/군선택</option>
+        {/* 아이디 */}
+            <div className="Form-item">
+              <span className="Form-item-icon material-symbols-rounded">account_circle</span>
+              <input type="text" className='Input-ID' placeholder="아이디" value={id} onChange={onChangeId} required/>
+              <button onClick={onClickIdCheck}  className='Input-ID-check' required> 중복확인 </button>
+              <Msg>
+                {showReqId && req_id}
+                {showGuideId && guide_id}
+                {showAcceptId && accept_id}
+              </Msg>
+            </div>
+        
           
-          {sigugun
-          // 필터함수를 사용하여 배열을 필터링하여 군/구를 불러옴
-            .filter((e) => e.sido === keySido)
-            .map((e) => (
-              <option key={e.sigugun} value={e.codeNm}>
-                {e.codeNm}
-              </option>
-            ))}
-        </select>
-        </div>
-      </div>
+        {/* 비밀번호 */}
+            <div className="Form-item">
+              <span className="Form-item-icon material-symbols-rounded">lock</span>
+              <input type="password" placeholder="비밀번호" value={password} onChange={onChangePassword} />
+              <Msg>
+                {showGuidePassword && guide_password}
+                {showAcceptPassword && accept_password}
+              </Msg>
+            </div>
 
-    {/* 회원가입 */}
-    <div className='SuBtn'>
-      <button className='SignUpBtn' type="submit" onClick={onClickButton}>회원가입</button>
-      </div>
+        {/* 비밀번호 확인 */}
+            <div className="Form-item">
+              <span className="Form-item-icon material-symbols-rounded">password</span>
+              <input type="password" placeholder="비밀번호 확인" value={password_check} onChange={onChangePassword_check} disabled={!regexPw.test(password)}/>
+              <Msg>
+                {showErrorPasswordCheck && error_password_check}
+                {showAcceptPasswordCheck && accept_password_check}
+              </Msg>
+            </div>
+
+        {/* 생년월일 */}
+            <div className="Form-item">
+              <span className="Form-item-icon material-symbols-rounded">cake</span>
+              <input type="date" value={birth} onChange={onChangeBirth} />
+              <span className='Span-Age'>만 {age}세</span>
+              <Msg></Msg>
+            </div>
+
+        {/* 성별 */}
+            <div className="Form-item">
+            {/* <span className="Form-item-icon material-symbols-rounded">성별</span> */}
+              <label className='Label-gender'>
+                <input type="radio" name="gender" value="남자" onChange={onChangeRadio} />남자<span></span>
+              </label>
+              <label className='Label-gender'>
+                <input type="radio" name="gender" value="여자" onChange={onChangeRadio} />여자<span></span>
+              </label>
+              <Msg></Msg>
+            </div>
+
+
+        {/* 주소 */}
+          <div className="Form-item">
+            <span className="Form-item-icon material-symbols-rounded">home</span>
+            <select onChange={onChangeRegion1}>
+              <option disabled selected>시도선택</option>
+              {sido.map((e) => (
+                <option key={e.sido} value={e.codeNm}>
+                  {e.codeNm}
+                </option>
+              ))}
+            </select>
+            <select onChange={onChangeRegion2}>
+              <option disabled selected>시/구/군선택</option>
+              
+              {sigugun
+              // 필터함수를 사용하여 배열을 필터링하여 군/구를 불러옴
+                .filter((e) => e.sido === keySido)
+                .map((e) => (
+                  <option key={e.sigugun} value={e.codeNm}>
+                    {e.codeNm}
+                  </option>
+                ))}
+            </select>
+            <Msg></Msg>
+          </div>
+
+        {/* 회원가입 */}
+          <button type="submit" className='Button-Submit' onClick={onClickButton}>회원가입</button>
+          </form>
+        </div>
       </div>
     </div>
   );
