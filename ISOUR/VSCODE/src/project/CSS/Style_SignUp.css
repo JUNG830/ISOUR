@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(to right, #333399, #ff00cc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+.SignUp-Container {
+  
+  /* height: 1000px; */
+  /* background-color: #fbfd91; */
+  background: skyblue;
+  position: relative;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  /* flex-direction: column; */
+  /* z-index: 0; */
+  
+  /* 아래부터는 조혜경이 추가 */
+  min-height: 100vh;
+}
+
+.SignUp-card-container {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(to right, rgba(0, 28, 150, 0.373));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.SignUp-card { 
+  /* width: 450px; */
+  width: 70vh;
+  background: rgba(255, 255, 255, .5);
+  padding: 4rem;
+  border-radius: 10px;
+  position: relative;
+}
+
+.SignUp-card::before {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, .15);
+  inset: 0;
+  transform: rotate(-5deg);
+  z-index: -1;
+}
+
+
+.SignUp-card-logo {
+  margin-bottom: 2rem;
+}
+
+.SignUp-card-logo img {
+  width: 60px;
+}
+
+.SignUp-card-logo,
+.SignUp-card-header,
+.SignUp-card-footer {
+  text-align: center;
+}
+
+/* SignUp-card-header 영역 */
+.SignUp-card-header {
+  margin-bottom: 2rem;
+}
+
+.SignUp-card-header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: .5rem;
+}
+
+.SignUp-card-header h1 + div {
+  font-size: calc(1rem * .8);
+  opacity: .8;
+}
+/* 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SignUp-card-form 영역
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.SignUp-card-form {
+  display: flex;
+  flex-direction: column;
+  /* gap: 1.5rem; */
+}
+
+.SignUp-card-form .Form-item {
+  position: relative;
+}
+
+.SignUp-card-form .Form-item .Form-item-icon {
+  position: absolute;
+  /* justify-items: center; */
+  top: .82rem;
+  left: 1.4rem;
+  font-size: 1.3rem;
+  /* ▼ 투명도 opacity */
+  opacity: .4; 
+}
+
+.SignUp-card input:focus {
+  background: white;
+}
+
+/* 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  이름 영역
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.SignUp-card .Input-Name {
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, .3);
+  padding: 1rem 1.5rem;
+  padding-left: calc(1rem * 3.5);
+  border-radius: 100px;
+  width: 100%;
+  transition: background .5s;
+}
+
+/* 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  아이디 영역
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.SignUp-card .Input-ID {
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, .3);
+  padding: 1rem 1.5rem;
+  padding-left: calc(1rem * 3.5);
+  border-radius: 100px;
+  width: 70%;
+  transition: background .5s;
+}
+
+/* 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  아이디 영역 > 중복확인
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.SignUp-card .Input-ID-check {
+  border: none;
+  outline: none;
+  background: rgba(41, 51, 91, .5);
+  color: white;
+  padding: 1rem;
+  letter-spacing: 2px;
+  /* padding-left: calc(1rem * 3.5); */
+  border-radius: 100px;
+  width: 30%;
+  transition: background .5s;
+  /* justify-content: flex-end; */
+}
+
+.Input-ID-check:hover {
+  background-color: rgb(41, 51, 91);
+  /* background-color: white; */
+  cursor: pointer;
+}
+
+/* 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  비밀번호 영역
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.SignUp-card input[type="password"] {
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, .3);
+  padding: 1rem 1.5rem;
+  padding-left: calc(1rem * 3.5);
+  border-radius: 100px;
+  width: 100%;
+  transition: background .5s;
+}
+
+/* 비밀번호 영역 > 비밀번호 확인 */
+.SignUp-card input[disabled] {
+  border: none;
+  outline: none;
+  background: rgba(0, 0, 0, .3);
+  padding: 1rem 1.5rem;
+  padding-left: calc(1rem * 3.5);
+  border-radius: 100px;
+  width: 100%;
+  transition: background .5s;
+}
+
+
+
+/* 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  회원가입 영역
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.Button-Submit {
+  border: none;
+  outline: none;
+  background: black;
+  color: white;
+  padding: 1rem;
+  letter-spacing: 2px;
+  border-radius: 100px;
+  width: 100%;
+  transition: background .5s;
+  /* text-align: right; */
+}
+
+/* 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  생년월일 영역
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.SignUp-card input[type="date"] {
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, .3);
+  padding: 1rem 1.5rem;
+  padding-left: calc(1rem * 3.5);
+  border-radius: 100px;
+  width: 70%;
+  transition: background .5s;
+  text-align: center;
+  letter-spacing: 5px;
+}
+
+/* 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  생년월일 영역 > 나이
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.Span-Age {
+  display: inline-block;
+  /* border-bottom: dashed; */
+  border-bottom: inset;
+  text-decoration: none;
+  outline: none;
+  /* background: rgba(255, 255, 255, .3); */
+  padding: 1rem 1.5rem;
+  /* padding-left: calc(1rem * 3.5); */
+  /* border-radius: 100px; */
+  width: 30%;
+  transition: background .5s;
+  text-align: center;
+  letter-spacing: 2px;
+  /* justify-content: flex-end; */
+}
+
+
+/* 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  성별 영역
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.Form-item-Gender {
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, .3);
+  padding: 1rem 1.5rem;
+  border-radius: 100px;
+  width: 100%;
+  transition: background .5s;
+  text-align: center;
+  letter-spacing: .5rem;
+}
+
+.Label-gender {
+  width: 40%;
+}
+
+.Label-gender input[type='radio'] {
+  margin-right: 20px;
+
+  vertical-align: middle;
+  appearance: none;
+  border: max(2px, 0.1em) solid gray;
+  border-radius: 50%;
+  width: 1.25em;
+  height: 1.25em;
+  
+}
+
+.Label-gender input[type="radio"]:checked {
+  border: 0.4em solid rgb(41, 51, 91);
+}
+
+.Label-gender [type="radio"]:hover {
+  background: rgba(255, 255, 255, .3);
+  box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+  
+  cursor: pointer;
+}
+
+
+/* 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  주소 영역
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.Form-item-Address {
+  background: rgba(255, 255, 255, .3);
+  padding: 1rem 1.5rem;
+  padding-left: calc(1rem * 3.5);
+  border-radius: 100px;
+  width: 100%;
+  transition: background .5s;
+}
+
+.Select-Sido {
+  width: 50%;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, .0);
+  position: relative;
+  transition: background .5s;
+}
+
+.Select-SiGuGun {
+  width: 45%;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, .0);
+  margin-left: .5rem;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .Container {
+    padding: 2rem 0;
+  }  
+
+  .SignUp-card {
+    width: 450px;
+    padding: 2rem;
+  }
+}

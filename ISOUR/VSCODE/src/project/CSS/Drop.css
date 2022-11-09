@@ -1,0 +1,37 @@
+
+
+.box-main {
+    position: relative;
+    height: 1000px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(251, 253, 145);
+}
+.box-box {
+    border: 1px solid black;
+    border-radius: 20px 20px 20px 20px;
+    background-color: honeydew;
+    height: 300px;
+    
+}
+
+.box-id {
+    margin: 40px;
+    color: black;
+
+}
+
+.btn-id {
+    margin-top: 15px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-span {
+    font-weight: 300;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}

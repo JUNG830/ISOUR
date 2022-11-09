@@ -1,0 +1,88 @@
+.MyPage-Container {
+  /* width: 1000px; */
+  position: relative;
+  height: 1000px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 0;
+  background-color: rgb(251, 253, 145);
+}
+
+/* 회원정보 수정 프로필 사진 스타일  */
+.profileImg-label{
+    margin: 5px 0 20px 0;
+    font-weight: bold;
+    font-size: 15px;
+    color: #0095f6;
+    /* display: inline-block; */
+    margin-top: 5px;
+  }
+  
+  /* 회원정보 수정 프로필 사진 input태그 */
+  .profileImg-input {
+    display: none;
+    cursor: pointer;
+  }
+  
+  /* MyPage 테이블 스타일 */
+  .mypage-table {
+    width: 600px;
+    background-color: #fff;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    font-size: 20px;
+  }
+  
+  .mypage-th {
+    display: flex;
+    justify-content: right;
+    padding-right: 45px;
+    margin: 1px 0;
+  }
+  
+  .mypage-td {
+    justify-content: left;
+    padding-left: 20px;
+    margin: 1px 0;
+  }
+  
+  /* 회원 정보 수정 테이블 */
+  .memberUpdate-table {
+    width: 600px;
+    background-color: #fff;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  }
+  .memberUpdate-table h1 {
+    font-size: 20px;
+  }
+  
+  .memberUpdate-table th {
+    display: flex;
+    justify-content: right;
+    padding-right: 100px;
+    margin: 2px 0;
+  }
+  
+  .memberUpdate-table td {
+    justify-content: left;
+    padding-left: 20px;
+    margin: 2px 0;
+  }
+  
+  .memberUpdate-btn {
+    display: flex;
+    padding: 30px;
+  }
+  
+  .memberUpdate-btn button {
+    background-color: #29335c;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0 20px;
+    width: 150px;
+    height: 30px;
+  }
