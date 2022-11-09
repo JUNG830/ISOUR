@@ -262,7 +262,7 @@ function SignUp() {
     console.log("isRegion1 : " + isRegion1);
     console.log("isRegion2 : " + isRegion2);
     
-    if(isName && isId && isId_check && isPassword && isBirth && isGender && isRegion1 && isRegion2) {
+    if(isName && isId && isId_check && isPassword && isPassword_check && isBirth && isGender && isRegion1 && isRegion2) {
       const memberReg = await TeamAPI.memberReg(name, id, password, birth, age, gender, region1, region2);
   
         console.log("name : " + name);
