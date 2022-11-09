@@ -6,4 +6,7 @@ ISOUR/Eclipse/.classpath
 ISOUR/Eclipse/.classpath
 ISOUR/Eclipse/build/classes/com/ISOUR/Servlet/UploadService.class
 ISOUR/Eclipse/src/main/java/com/ISOUR/Servlet/UploadService.java
-ISOUR\ISOUR\Eclipse\.classpath
+
+
+# Legacy Eclipse project files
+.classpath
