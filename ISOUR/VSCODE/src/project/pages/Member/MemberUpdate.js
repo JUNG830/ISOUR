@@ -218,15 +218,20 @@ const onChangeName = e => {
 const [imageSrc, setImageSrc] = useState('');
 
   const encodeFileToBase64 = (fileBlob) => {
+    // FileReader의 인스턴스 reader을 생성한다.
     const reader = new FileReader();
+    // 인자로 받은 fileBlob을 base64로 인코딩한다.
     reader.readAsDataURL(fileBlob);
     return new Promise((resolve) => {
       reader.onload = () => {
+    // reader가 인코딩을 성공했다면 reader.result 안에 담긴 문자열을 imageSrc로 세팅해준다.
         setImageSrc(reader.result);
+    // resolve를 호출하여 Promise를 이행상태(비동기 로직 처리가 완료된 상태로 Promise 결과값 반환 상태)로 만들어준다.
+    // Promise는 비동기 처리에 활용되는 객체로, 순차적으로 특정 코드의 실행을 끝까지 기다리지 않고 다음 코드를 선제적으로 처리하는 것을 의미
         resolve();
       };
       SetFiles(fileBlob);
-      console.log("이거!" + files);
+      console.log(files);
       setIsFileUp(true)
     });
   };
@@ -249,10 +254,16 @@ const [imageSrc, setImageSrc] = useState('');
             </tr>
             <tr>
               <td colSpan="2" align='center' >
+
+                {/* 파일이 추가되었는지를 먼저 확인 -> DB 데이터가 있는지를 먼저 확인할 경우 파일을 변경했을 때를 인식하지 못함.  */}
                   { isFileUP ?  
+                  //  추가한 파일 이 있는 경우 해당 파일은 미리보기로 보여줌.
                      <img src={imageSrc} style={{borderRadius:'70%', width: '200px'}} />
+                    //  추가한 파일이 없는 경우 DB에 저장된 파일이 있는지 확인
                     : member.fileName ?
+                    // DB 에 저장된 데이터가 있다면 해당 데이터를 미리보기에 보여줌.
                            <img src={`${DOMAIN}` + `${member.fileName}`} style={{borderRadius:'70%', width: '200px'}} />
+                    // DB에 저장된 데이터가 없다면 기본 파일을 보여줌.
                            : <img src={noImage} style={{borderRadius:'70%', width: '200px'}} /> 
                   } 
               </td>   
