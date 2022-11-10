@@ -13,7 +13,7 @@ import com.ISOUR.Common.Common;
 import com.ISOUR.DAO.MemberDAO;
 
 // 쪽지 보내기
-@SuppressWarnings("serial")
+@SuppressWarnings({ "serial", "unused" })
 @WebServlet("/MessageServlet")
 public class MessageServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,7 +23,8 @@ public class MessageServlet extends HttpServlet{
 	protected void doOptions(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Common.corsResSet(response);
 	}
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @SuppressWarnings("unchecked")
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 한글 깨짐 방지를 위해서 설정
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");

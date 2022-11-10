@@ -37,7 +37,9 @@ public class UploadService extends HttpServlet{
 	private static final long serialVersionUID = -4793303100936264213L;
 	
 	private static final String CHARSET = "utf-8";
-	private static final String uploadFilePath = "\\UPLOADING";
+	
+//	** 추후 해당 경로에 폴더가 없을 경우 폴더 생성 구현시 필요한 코드 (생성할 폴더명) 
+//	private static final String uploadFilePath = "\\UPLOADING";
 	
 	// 학원 버전 경로
 //	private static final String UPLOAD_DIR = "D:\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp";
@@ -46,17 +48,17 @@ public class UploadService extends HttpServlet{
 //	private static final String UPLOAD_DIR = "F:\\KH\\TOTAL-1\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
 	
 	// 우 노트북
-//	private static final String UPLOAD_DIR = "F:\\KH\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
+	private static final String UPLOAD_DIR = "F:\\KH\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
 	
 	
 	// 조혜경 학원 데스크탑
-	private static final String UPLOAD_DIR = "D:\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
+//	private static final String UPLOAD_DIR = "D:\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
 	
 	// 규한님 학원 데스크탑
 //	private static final String UPLOAD_DIR = "D:\\혜정님 수정파일\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
 	
 	// 조혜경 노트북
-	private static final String UPLOAD_DIR = "D:\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
+//	private static final String UPLOAD_DIR = "D:\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
 	
 
 	public UploadService() {
@@ -73,15 +75,18 @@ public class UploadService extends HttpServlet{
 		response.setContentType("text/html; charset=UTF-8");
         request.setCharacterEncoding(CHARSET);
         PrintWriter out = response.getWriter();
-        String contentType = request.getContentType();
+        
 		
 		String fileName = ""; // 원본파일명
 		String filePath = ""; // 파일 경로
         String loginId = "";	// 로그인 아이디
         String extension = "";	// 확장자명
 		
-		
-		if (contentType != null &&  contentType.toLowerCase().startsWith("multipart/")) {
+        
+//        HTTP 요청객체인 HttpServletRequest 객체로부터 Content-Type 헤더값을 꺼내어 전송데이터의 타입이 파일을 전송할 수 있는 multipart/form-data인지 확인합니다.
+        String contentType = request.getContentType();
+        if (contentType != null &&  contentType.toLowerCase().startsWith("multipart/")) {
+			
             // getParts()를 통해 Body에 넘어온 데이터들을 각각의  Part로 쪼개어 리턴
             Collection<Part> parts = request.getParts();
             
@@ -92,15 +97,17 @@ public class UploadService extends HttpServlet{
             	System.out.println("파일 용량 초과!!");
             }
             
-            // creates the save directory if it does not exists
-    		File fileSaveDir = new File(uploadFilePath);
-    		
-    		// 파일 경로 없으면 생성
-    		if (!fileSaveDir.exists()) {
-    			fileSaveDir.mkdirs();
-    		}
+            
+            // ** 해당 경로에 폴더가 없을 경우 폴더 생성 구현 중**
+//            // creates the save directory if it does not exists
+//    		File fileSaveDir = new File(uploadFilePath);
+//    		
+//    		// 파일 경로 없으면 생성
+//    		if (!fileSaveDir.exists()) {
+//    			fileSaveDir.mkdirs();
+//    		}
 
- 
+//            Collection에 담긴 각각의 Part에 대해 for문을 통해 업로드 처리를 시작합니다.
             for (Part part : parts) {
                 System.out.printf("파라미터 명 : %s, contentType :  %s,  size : %d bytes \n", part.getName(),
                         part.getContentType(), part.getSize());
@@ -109,6 +116,9 @@ public class UploadService extends HttpServlet{
                 if  (part.getHeader("Content-Disposition").contains("filename=")) {
                     fileName = extractFileName(part.getHeader("Content-Disposition"));
                     
+                    
+//                    Part에 있는 Content-Disposition 속성값으로부터 파일명을 추출하여 part.write()를 통해 임시저장된 파일 데이터를 복사하여 지정한 경로에 저장합니다.
+//                    이후에 part.delete()를 통해 저장되어있던 임시저장 데이터를 제거합니다. 
                     if (part.getSize() > 0) {
                         System.out.printf("업로드 원본 파일 명 : %s  \n", fileName);
                         System.out.printf("업로드 원본 파일 경로 : %s  \n", UPLOAD_DIR + File.separator + fileName);
@@ -166,11 +176,16 @@ public class UploadService extends HttpServlet{
         }
     }
  
- 
+//	Part에 있는 Content-Disposition 속성값을 partHeader 변수로 받아 파일명을 추출합니다. 
+//	String의 여러가지 메서드를 이용하여 추출하는 내용입니다.
+	
     private String extractFileName(String partHeader) {
         for (String cd : partHeader.split(";")) {
             if (cd.trim().startsWith("filename")) {
                 String fileName = cd.substring(cd.indexOf("=") +  1).trim().replace("\"", "");
+                
+//                File.separator는 운영체제별로 다른 파일경로 구분자를 담고 있습니다. 
+//                따라서 업로드한 파일 경로의 마지막 separator뒤에 오는 값이 실제 파일명이라 할 수 있습니다. 
                 int index = fileName.lastIndexOf(File.separator);
                 return fileName.substring(index + 1);
             }
