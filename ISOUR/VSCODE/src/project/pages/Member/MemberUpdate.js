@@ -37,6 +37,8 @@ const Msg = styled.div`
 
 
 function MemberUpdate() {
+
+
     const localId = window.localStorage.getItem("userId");
     const localPw = window.localStorage.getItem("userPw");
     const isLogin = window.localStorage.getItem("isLogin");
@@ -46,7 +48,7 @@ function MemberUpdate() {
 
   // 이름, 아이디, 비밀번호, 비밀번호 확인, 생년월일, 성별, 주소, 회원가입
   // 조혜경 : 입력 받을 값 상태
-  const [memberInfo, setMemberInfo] = useState([]); // 현재 로그인 되어 있는 회원의 정보 저장용
+  
   const imgRef = useRef(null);
 
   const [ files, SetFiles ] = useState({noImage});
@@ -61,7 +63,8 @@ function MemberUpdate() {
   const [region1, setRegion1] = useState("");
   const [region2, setRegion2] = useState("");
   const [keySido, setKeySido] = useState("");
-  const [MBTI, setMBTI] = useState("");
+  const [addressChange, setAddressChange] = useState(false);
+  const [mbti, setMbti] = useState("");
   
   const today = new Date();
 
@@ -99,26 +102,51 @@ function MemberUpdate() {
     axios.post('http://localhost:8111/ISOUR/UploadService', formData, config).then(() => { // API Gateway URL 입력
       console.log(localId);
     });
-};
+  };
 
+  const [memberInfo, setMemberInfo] = useState([]); // 현재 로그인 되어 있는 회원의 정보 저장용
   useEffect(() => {  
     const memberData = async () => {
         console.log("localId : "+ localId);
         try {
             const response = await TeamAPI.memberInfo(localId); // 회원 정보 조회
-            setMemberInfo(response.data);
-            console.log(response.data)
+            const temp_response = response.data;
+            setMemberInfo(temp_response);
+
+            setName(temp_response[0].name);
+            console.log("name : " + temp_response[0].name);
+
+            setBirth(temp_response[0].birth);
+            console.log("birth : " + temp_response[0].birth);
+
+            setAge(temp_response[0].age);
+            console.log("age : " + temp_response[0].age);
+
+            setGender(temp_response[0].gender);
+            console.log("gender : " + temp_response[0].gender);
+
+            setRegion1(temp_response[0].region1);
+            console.log("region1 : " + temp_response[0].region1);
+
+            setRegion2(temp_response[0].region2);
+            console.log("region2 : " + temp_response[0].region2);
+
+            setMbti(temp_response[0].mbti);
+            console.log("mbti : " + temp_response[0].mbti);
+            // setName(temp_response.name);
+            
         } catch (e) {
             console.log(e);
         }
     };
     memberData();
-}, []);
+  }, []);
 
-const onChangeName = e => { 
-  let temp_name = e.target.value;
-  setName(temp_name); 
-}
+  const onChangeName = e => {
+    console.log("name : " + name);
+    let temp_name = e.target.value;
+    setName(temp_name); 
+  };
   
   const onChangeBirth = e => { 
     setIsBirth(false);
@@ -212,10 +240,48 @@ const onChangeName = e => {
     //   alert('입력된 값을 확인하세요.');
   }
 
+  const onClickChange = () => {
+    setAddressChange(true);
+  }
 
+  function selectAddress1() {
 
-// 프로필 사진 미리보기
-const [imageSrc, setImageSrc] = useState('');
+    return (
+      <>
+
+<select className='Select-Sido' onChange={onChangeRegion1}>
+                <option disabled selected>시도선택</option>
+                {sido.map((e) => (
+                  <option key={e.sido} value={e.codeNm}>
+                    {e.codeNm}
+                  </option>
+                ))}
+              </select>
+      </>
+    );
+  }
+  const selectAddress2 = () => {
+
+    return (
+      <>
+      <select className='Select-SiGuGun' onChange={onChangeRegion2}>
+                <option disabled selected>시/구/군선택</option>
+                
+                {sigugun
+                // 필터함수를 사용하여 배열을 필터링하여 군/구를 불러옴
+                  .filter((e) => e.sido === keySido)
+                  .map((e) => (
+                    <option key={e.sigugun} value={e.codeNm}>
+                      {e.codeNm}
+                    </option>
+                  ))}
+              </select>
+      </>
+    );
+  }
+
+  // 프로필 사진 미리보기
+  const [imageSrc, setImageSrc] = useState('');
 
   const encodeFileToBase64 = (fileBlob) => {
     const reader = new FileReader();
@@ -269,78 +335,142 @@ const [imageSrc, setImageSrc] = useState('');
             </tr>
             <tr>
               <th>이름</th>
-              <td><input type="text" value={name} placeholder={member.name} required onChange={onChangeName}/></td>
+              {/* <td><input type="text" value={name} placeholder={member.name} required onChange={onChangeName}/></td> */}
+              <td><input type="text" value={name} onChange={onChangeName}/></td>
             </tr>
             <tr>
               <th>아이디</th>
-              <td><input type="text" value={password} placeholder={member.id} disabled required id="inputId" readOnly/></td>
+              <td><input type="text" value={id} placeholder={member.id} id="inputId"/></td>
             </tr>
             <tr>
               <th>비밀번호</th>
-              <td><input type="password" value={member.password} disabled readOnly/></td>
+              <td><input type="password" value={password} /></td>
             </tr>
             <tr>
               <th>생년월일</th>
-              <td><input type="date" value={member.birth} readOnly />
-                  <span readOnly>만 {member.age}세</span>
+              <td><input type="date" value={birth} onChange={onChangeBirth}/>
+                  <span >만 {age}세</span>
               </td>
             </tr>
             <tr>
               <th>성별</th>
               <td>
-              <label>
-                {(`${member.gender}` === "남자") ?  
-                    <input type="radio" name="gender" value="남자" checked disabled readOnly /> 
-                    : <input type="radio" name="gender" value="남자" disabled readOnly />
-                } 남자
-
-                {(`${member.gender}` === "여자") ?  
-                    <input type="radio" name="gender" value="여자" checked disabled readOnly /> 
-                    : <input type="radio" name="gender" value="여자" disabled readOnly />
-                } 여자
-              </label>
+                <label>
+                  { (gender == '남자') 
+                  ? <input type="radio" name="gender" value="남자" onChange={onChangeRadio} checked/>
+                  : <input type="radio" name="gender" value="남자" onChange={onChangeRadio}/>
+                  }
+                <span>남자</span>
+                </label>
+                <label>
+                { (gender == '여자') 
+                  ? <input type="radio" name="gender" value="여자" onChange={onChangeRadio} checked/>
+                  : <input type="radio" name="gender" value="여자" onChange={onChangeRadio} />}
+                  <span>여자</span>
+                </label>
               </td>
             </tr>
             <tr>
               <th>주소</th>
               <td>
-              <select defaultValue={member.region1} onChange={onChangeRegion1} disabled readOnly>
-                  <option disabled >시도선택</option>
+                  {(addressChange !== true)
+                
+                    ? <select onChange={onChangeRegion1}>
+                      <option>{region1}</option>
+                      </select>
+                    : <selectAddress1></selectAddress1>
+                  }
+                
+
+                
+                  {(addressChange !== true)
+                    ? <select onChange={onChangeRegion1}>
+                      <option>{region2}</option>
+                      </select>
+                    : <selectAddress2 />
+                  }
+                <button onClick={onClickChange}>변경</button>
+              </td>
+
+                  {/* 
+              <td>
+                { (addressChange === false)
+                ? <>
+                  
+                  </>
+                : <>
+                  <select onChange={onChangeRegion1}>
+                    <option disabled selected>시도선택</option>
+                    {sido.map((e) => (
+                      <option key={e.sido} value={e.codeNm}>
+                        {e.codeNm}
+                      </option>
+                    ))}
+                  </select>
+                  <select onChange={onChangeRegion2}>
+                    <option disabled selected>시/구/군선택</option>
+                    
+                    {sigugun
+                    // 필터함수를 사용하여 배열을 필터링하여 군/구를 불러옴
+                      .filter((e) => e.sido === keySido)
+                      .map((e) => (
+                        <option key={e.sigugun} value={e.codeNm}>
+                          {e.codeNm}
+                        </option>
+                    ))}
+                  </select></>
+                }
+                
+                
+              </td>
+               */}
+              {/* 
+              <td>
+              <select value={region1} onChange={onChangeRegion1} >
+                <option disabled>시도선택</option>
                   {sido.map((e) => (
                   <option key={e.sido} value={e.codeNm} >
-                      {e.codeNm}
+                    {e.codeNm}
                   </option>
                   ))}
               </select>
-              <select defaultValue={member.region2} onChange={onChangeRegion2} disabled readOnly>
-                  <option disabled >시/구/군선택</option>
+              <select defaultValue={region2} onChange={onChangeRegion2} >
+                  <option disabled>시/구/군선택</option>
                   
                   {sigugun
-                  // 필터함수를 사용하여 배열을 필터링하여 군/구를 불러옴
-                  .filter((e) => e.sido === `${member.region1}` )
+                // 필터함수를 사용하여 배열을 필터링하여 군/구를 불러옴
+                  .filter((e) => e.sido === keySido)
                   .map((e) => (
-                      <option key={e.sigugun} value={e.codeNm}>
+                    <option key={e.sigugun} value={e.codeNm}>
                       {e.codeNm}
-                      </option>
+                    </option>
                   ))}
-                </select>
+              </select>
               </td>
+               */}
             </tr>
+
+          {/* MBTI */}
             <tr>
               <th>MBTI</th>
               <td>
-                <input type="text" value={member.mbti} disabled />
+                <input type="text" value={mbti} disabled />
               </td>
             </tr>
+
+          {/* 자기소개 */}
             <tr>
               <th>자기소개</th>
               <td>
-                <textarea style={{width: '212px', height: '136px'}} placeholder='임시로 만들어 둠'/>
+                {/* <textarea style={{width: '250px', height: '136px'}} placeholder='자기소개 한 줄 작성(글자 수 제한)'/> */}
+                <textarea placeholder='자기소개 한 줄 작성(글자 수 제한)'/>
               </td>
             </tr>
-            <tr>
+
+          {/* 빈 줄 */}  
+            {/* <tr>
                   <br />
-                </tr>
+                </tr> */}
         </table>
        
         
