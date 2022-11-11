@@ -54,7 +54,7 @@
     font-size: 20px;
     font-family: 'Single Day', cursive;
     border: 3px solid rgb(251, 253, 145);
-    padding: 30px;
+    /* padding: 30px; */
     font-weight: 700;
     height: 100px;
     max-height: 100px;

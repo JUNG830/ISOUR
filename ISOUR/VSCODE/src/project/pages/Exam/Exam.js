@@ -6,12 +6,7 @@ import "../Exam/Exam.css";
 import TeamAPI from '../../api/TeamAPI';
 import reset from '../../CSS/reset.css';
 import mbti from '../../images/mbti.jpg';
-import start from '../../images/start.png';
-// import '../CSS/Style_Login.css';
 
-// QuizApp 의 Line 44 에서 props를 넘겨받음.
-// props 1 ▶ mode={()=>changeMode('score')} 
-// props 2 ▶ quizList={states.quizList}
 const Quiz = (props) => {
   const isLogin = window.localStorage.getItem("isLogin");
   if (isLogin === "FALSE") window.location.replace("/");
@@ -24,16 +19,10 @@ const Quiz = (props) => {
   const [SnN, setSnN] = useState(0);
   const [TnF, setTnF] = useState(0);
   const [JnP, setJnP] = useState(0);
- 
+
 
 
   const [testMBTI, setTestMBTI] = useState("");
-  useEffect(()=>{
-    console.log(EnI);
-    console.log(SnN);
-    console.log(TnF);
-    console.log(JnP);
-  },[EnI,SnN,TnF,JnP]);
 
   const answerNoList = {
     answer: ["I", "N", "F", "P"]
@@ -43,7 +32,6 @@ const Quiz = (props) => {
   };
 
   const onClickSave = async (e) => {
-    // e.preventDefault();
     console.log("저장하기 버튼 눌렀어요.");
     console.log("MBTI 결과 : " + testMBTI);
 
@@ -54,19 +42,16 @@ const Quiz = (props) => {
 
       if (res.data.result === "OK") {
         alert("저장이 잘 되었는지 확인해봐요.")
-        // window.localStorage.setItem("isLogin", "TRUE");
         window.location.replace("/");
       } else {
-        alert("아이디 또는 비밀번호를 확인하세요!");
+        console.log("MBTI 저장 실패 확인하세요!");
       }
     } catch (e) {
-      alert("오류 발생!! 아이디(" + +")랑 비밀번호(" + +")는 일단 넘어와요.");
-      console.log("로그인 에러!! 왜 또 안 될까..?");
+      alert("MBTI 통신 에러!");
     }
-    
   }
 
-  // QuizApp의 문제 수랑 같아지면 EndMessage를 보여줌
+  //저장하기 화면 뜨는 조건
   if (count === props.questionList.length) {
     return (
       <EndMessage>
@@ -76,46 +61,36 @@ const Quiz = (props) => {
       </EndMessage>
     );
   }
-  
+
   function onClickYes1() {
     let index = count2 / 5 - 1;
-    
-    
     setCount(count + 1);
     setCount2(count2 + 1);
-    
-    console.log(index + ' ' + EnI)
     setEnI(EnI => EnI + 1);
-    let current = EnI+1;
+    let current = EnI + 1;
     if (current < 0 && (count2 / 5) === 1) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동1-1');
+      console.log('작동 I값 저장');
     } else if (current > 0 && (count2 / 5) === 1) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동1-2');
+      console.log('작동 E값 저장');
     }
   }
 
   function onClickNo1() {
 
     let index = count2 / 5 - 1;
-    let index2 = count/EnI
-
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setEnI(EnI - 1);
-    let current = EnI-1;
-
-
-    console.log(index + ' ' + EnI + ' ' +index2)
+    let current = EnI - 1;
 
     if (current < 0 && (count2 / 5) === 1) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동2-1');
+      console.log('작동 I값 저장');
     } else if (current > 0 && (count2 / 5) === 1) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동2-2');
+      console.log('작동 E값 저장');
     }
   }
 
@@ -125,18 +100,14 @@ const Quiz = (props) => {
     setCount(count + 1);
     setCount2(count2 + 1);
     setSnN((SnN) => SnN + 1);
-    let current = SnN+1;
-
-
-
-    console.log(index + ' ' + SnN)
+    let current = SnN + 1;
 
     if (current < 0 && (count2 / 5) === 2) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동3-1');
+      console.log('작동 N값 적용');
     } else if (current > 0 && (count2 / 5) === 2) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동3-2');
+      console.log('작동 S값 적용');
     }
   }
 
@@ -146,17 +117,14 @@ const Quiz = (props) => {
     setCount(count + 1);
     setCount2(count2 + 1);
     setSnN((SnN) => SnN - 1);
-    let current = SnN-1;
-
-
-    console.log(index + ' ' + SnN)
+    let current = SnN - 1;
 
     if (current < 0 && (count2 / 5) === 2) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동4-1');
+      console.log('작동 N값 적용');
     } else if (current > 0 && (count2 / 5) === 2) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동4-2');
+      console.log('작동 S값 적용');
     }
   }
   function onClickYes3() {
@@ -165,16 +133,14 @@ const Quiz = (props) => {
     setCount(count + 1);
     setCount2(count2 + 1);
     setTnF((TnF) => TnF + 1);
-    let current = TnF+1;
-
-    console.log(index + ' ' + TnF)
+    let current = TnF + 1;
 
     if (current < 0 && (count2 / 5) === 3) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동5-1');
+      console.log('작동 F값 적용');
     } else if (current > 0 && (count2 / 5) === 3) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동5-2');
+      console.log('작동 T값 적용');
     }
   }
 
@@ -184,37 +150,30 @@ const Quiz = (props) => {
     setCount(count + 1);
     setCount2(count2 + 1);
     setTnF((TnF) => TnF - 1);
-    let current = TnF-1;
-
-    console.log(index + ' ' + TnF)
+    let current = TnF - 1;
 
     if (current < 0 && (count2 / 5) === 3) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동6-1');
+      console.log('작동 F값 적용');
     } else if (current > 0 && (count2 / 5) === 3) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동6-2');
+      console.log('작동 T값 적용');
     }
 
   }
   function onClickYes4() {
     let index = count2 / 5 - 1;
-
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setJnP((JnP) => JnP + 1);
-    let current = JnP+1;
-
-
-    console.log(index + ' ' + JnP)
+    let current = JnP + 1;
 
     if (current < 0 && (count2 / 5) === 4) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동7-1');
+      console.log('작동 P값 적용');
     } else if (current > 0 && (count2 / 5) === 4) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동7-2');
+      console.log('작동 J값 적용');
     }
   }
 
@@ -224,17 +183,14 @@ const Quiz = (props) => {
     setCount(count + 1);
     setCount2(count2 + 1);
     setJnP((JnP) => JnP - 1);
-    let current = JnP-1;
-
-
-    console.log(index + ' ' + JnP)
+    let current = JnP - 1;
 
     if (current < 0 && (count2 / 5) === 4) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동8-1');
+      console.log('작동 P값 적용');
     } else if (current > 0 && (count2 / 5) === 4) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동8-2');
+      console.log('작동 J값 적용');
     }
   }
 
@@ -305,12 +261,6 @@ const Exam = () => {
   const isLogin = window.localStorage.getItem("isLogin");
   if (isLogin === "FALSE") window.location.replace("/login");
 
-  const currentId = window.localStorage.getItem("userId");
-  const currentPw = window.localStorage.getItem("userPw");
-
-  console.log("\n\n현재 localStorage 에 저장된 ID : " + currentId);
-  console.log("\n\n현재 localStorage 에 저장된 PASSWORD : " + currentPw);
-
   const [states, setStates] = useState({
     mode: 'start',
     questionList: [
@@ -343,14 +293,12 @@ const Exam = () => {
 
   return (
     <div>
-      
-      {/* mode 가 main 일 때 */}
       {states.mode === 'start'
         ?
         <div>
-      <img className='mbti-btn-img' src={mbti}></img>
+          <img className='mbti-btn-img' src={mbti}></img>
 
-          <button className='btn-exam-start'  onClick={() => { changeMode('quiz') }}>검 사 시 작</button>
+          <button className='btn-exam-start' onClick={() => { changeMode('quiz') }}>검 사 시 작</button>
         </div>
         : null
       }
