@@ -38,54 +38,34 @@ const MyPage = () => {
     memberData();
     }, []);
 
-  const onClickMember = () => {
-    console.log("회원 목록 조회 눌렀어요.");
-    window.location.replace("/AdminMemberInfo");
-  }
-  
   const onClickDrop = () => {
     console.log("탈퇴하기 버튼 눌렀어요.");
-    // alert("콘솔 확인하세요.")
     window.location.replace("/MemberDrop");
   }
   
   const onClickUpdate = () => {
     console.log("수정하기 버튼 눌렀어요.");
-    // alert("콘솔 확인하세요.")
     window.location.replace("/MemberUpdate");
   }
 
   const onClickTestStart = () => {
     console.log("검사하기 버튼 눌렀어요.");
-    // alert("콘솔 확인하세요.")
     window.location.replace("/Exam");
   }
   const onClickMessage = () => {
     console.log("메세지함 버튼 눌렀어요.");
-    // alert("콘솔 확인하세요.")
     window.location.replace("/MessageList");
   }
 
 
 
   return(
-    <div>
+    <div className='Container'>
       <div className="MyPage-Container">
-        <div className="mainhead">
-          
-          {/* admin 계정일 때만 회원목록조회 버튼 생성 */}
-          {/* { localId === 'admin' &&
-            <div onClick={onClickMember}>
-              <img src={nowGo} alt="화살표"/>
-              <Link to='/AdminMemberInfo'><span>회원 목록 조회</span></Link>
-            </div>
-          } */}
-          
-        </div>
-        <div className="history" >
+        <div className="MyPage-history" >
           {memberInfo && memberInfo.map(member => (
             <div key={member.id}>
-              <table className='mypage-table'>
+              <table className='MyPage-table'>
               <colgroup> 
                 <col width="50%" /> 
                 <col width="50%" /> 
@@ -104,36 +84,32 @@ const MyPage = () => {
                   <br />
                 </tr>
                 <tr>
-                  <th className='mypage-th' >이름</th>
-                  <td className='mypage-td'>{member.name}</td>
+                  <th className='MyPage-th' >이름</th>
+                  <td className='MyPage-td'>{member.name}</td>
                 </tr>
                 <tr>
-                  <th className='mypage-th'>아이디</th>
-                  <td className='mypage-td'>{member.id}</td>
-                </tr>
-                {/* <tr>
-                  <th className='mypage-th'>비밀번호</th>
-                  <td className='mypage-td'>{member.pwd}</td>
-                </tr> */}
-                <tr>
-                  <th className='mypage-th'>생년월일</th>
-                  <td className='mypage-td'>{member.birth}</td>
+                  <th className='MyPage-th'>아이디</th>
+                  <td className='MyPage-td'>{member.id}</td>
                 </tr>
                 <tr>
-                  <th className='mypage-th'>나이</th>
-                  <td className='mypage-td'>{member.age}</td>
+                  <th className='MyPage-th'>생년월일</th>
+                  <td className='MyPage-td'>{member.birth}</td>
                 </tr>
                 <tr>
-                  <th className='mypage-th'>성별</th>
-                  <td className='mypage-td'>{member.gender}</td>
+                  <th className='MyPage-th'>나이</th>
+                  <td className='MyPage-td'>{member.age}</td>
                 </tr>
                 <tr>
-                  <th className='mypage-th'>주소</th>
-                  <td className='mypage-td'>{member.region1} {member.region2}</td>
+                  <th className='MyPage-th'>성별</th>
+                  <td className='MyPage-td'>{member.gender}</td>
                 </tr>
                 <tr>
-                  <th className='mypage-th'>MBTI</th>
-                  <td className='mypage-td'> 
+                  <th className='MyPage-th'>주소</th>
+                  <td className='MyPage-td'>{member.region1} {member.region2}</td>
+                </tr>
+                <tr>
+                  <th className='MyPage-th'>MBTI</th>
+                  <td className='MyPage-td'> 
                     { member.mbti ? 
                         member.mbti 
                         : <button onClick={onClickTestStart}>검사하기</button>}
@@ -159,7 +135,6 @@ const MyPage = () => {
               <img src={nowGo} alt="화살표" />
               <span>탈퇴하기</span>
             </div>
-          
         </div>
       </div>
     </div>

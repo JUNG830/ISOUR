@@ -36,19 +36,22 @@ public class UploadService extends HttpServlet{
 	 */
 	private static final long serialVersionUID = -4793303100936264213L;
 	
-	private static final String CHARSET = "utf-8";
+	
 	
 //	** 추후 해당 경로에 폴더가 없을 경우 폴더 생성 구현시 필요한 코드 (생성할 폴더명) 
 //	private static final String uploadFilePath = "\\UPLOADING";
 	
-	// 학원 버전 경로
-//	private static final String UPLOAD_DIR = "D:\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp";
+	// 학원 HJ 버전 경로
+//	private static final String UPLOAD_DIR = "D:\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
+	
+	// 학원 ISOUR 버전 경로
+	private static final String UPLOAD_DIR = "D:\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
 	
 	// 집 버전
 //	private static final String UPLOAD_DIR = "F:\\KH\\TOTAL-1\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
 	
 	// 우 노트북
-	private static final String UPLOAD_DIR = "F:\\KH\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
+//	private static final String UPLOAD_DIR = "F:\\KH\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
 	
 	
 	// 조혜경 학원 데스크탑
@@ -60,7 +63,8 @@ public class UploadService extends HttpServlet{
 	// 조혜경 노트북
 //	private static final String UPLOAD_DIR = "D:\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
 	
-
+	private static final String CHARSET = "utf-8";
+	
 	public UploadService() {
 		
 	}
@@ -72,6 +76,9 @@ public class UploadService extends HttpServlet{
 	@SuppressWarnings({ "unchecked" })
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+//		equest 객체와 response 객체에서, 문자 인코딩을 UTF-8로 변경하는 코드를 작성하시오 (20점)
+		
 		response.setContentType("text/html; charset=UTF-8");
         request.setCharacterEncoding(CHARSET);
         PrintWriter out = response.getWriter();
@@ -112,12 +119,12 @@ public class UploadService extends HttpServlet{
                 System.out.printf("파라미터 명 : %s, contentType :  %s,  size : %d bytes \n", part.getName(),
                         part.getContentType(), part.getSize());
                 
-                
+//                Part에 있는 Content-Disposition 속성값으로부터 파일명을 추출 
                 if  (part.getHeader("Content-Disposition").contains("filename=")) {
                     fileName = extractFileName(part.getHeader("Content-Disposition"));
                     
                     
-//                    Part에 있는 Content-Disposition 속성값으로부터 파일명을 추출하여 part.write()를 통해 임시저장된 파일 데이터를 복사하여 지정한 경로에 저장합니다.
+//                    part.write()를 통해 임시저장된 파일 데이터를 복사하여 지정한 경로에 저장합니다.
 //                    이후에 part.delete()를 통해 저장되어있던 임시저장 데이터를 제거합니다. 
                     if (part.getSize() > 0) {
                         System.out.printf("업로드 원본 파일 명 : %s  \n", fileName);
@@ -126,6 +133,10 @@ public class UploadService extends HttpServlet{
                         part.delete();
                     }
                 } else {
+                	
+//                	Client에서 아래와 같은 form 태그 내 형식을 통해 전송 된 HTTP 요청의 Parameter 정보를
+//                	Servlet 클래스의 doGet() 메소드 내에서 변수에 저장하는 구문을 작성하시오 (20점)
+                	
                 	loginId = request.getParameter(part.getName());
                     System.out.printf("name : %s, value : %s  \n", part.getName(), loginId);
                     
@@ -158,6 +169,8 @@ public class UploadService extends HttpServlet{
             
             System.out.println(">>> fileName");
             System.out.println(fileName);
+            System.out.println(">>> filePath");
+            System.out.println(filePath);
             
             MemberDAO dao = new MemberDAO();
     		boolean isRegister = dao.FlieUpload(filePath, fileName, loginId);

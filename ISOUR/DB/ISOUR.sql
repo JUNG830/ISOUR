@@ -8,7 +8,7 @@ COMMIT;
 
 /* 
     테이블 삭제(★주의★) */
---DROP TABLE I_MEMBER;
+DROP TABLE I_MEMBER;
 --DROP TABLE admin;
 
 
@@ -39,9 +39,9 @@ CREATE TABLE ★★★ (
 
 /* 
     (선택) 쪽지함 생성 */
---INSERT INTO I_MEMBER VALUES('', '', '어드민', 'admin', 'admin1234', '1971-05-08', '52', '여자', '부산광역시', '해운대구', '');
---INSERT INTO I_MEMBER VALUES('', '', '이디야', 'dleldi', 'dleldi88', '2000-06-06', '22', '남자', '대구광역시', '수성구', ''); 
---INSERT INTO I_MEMBER VALUES('', '', '기요미', 'rldyal', 'rldyal59', '1997-06-25', '25', '여자', '서울특별시', '도봉구', ''); 
+INSERT INTO I_MEMBER VALUES('', '', '어드민', 'admin', 'admin1234', '1971-05-08', '52', '여자', '부산광역시', '해운대구', '');
+INSERT INTO I_MEMBER VALUES('', '', '이디야', 'dleldi', 'dleldi88', '2000-06-06', '22', '남자', '대구광역시', '수성구', ''); 
+INSERT INTO I_MEMBER VALUES('', '', '기요미', 'rldyal', 'rldyal59', '1997-06-25', '25', '여자', '서울특별시', '도봉구', ''); 
 
 /* 
     쿼리문 테스트 */    

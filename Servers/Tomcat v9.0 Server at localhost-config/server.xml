@@ -60,7 +60,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
-    <Connector connectionTimeout="20000" port="8090" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector connectionTimeout="20000" port="8111" protocol="HTTP/1.1" redirectPort="8443"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -151,8 +151,10 @@
              Documentation at: /docs/config/valve.html
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
-
-      <Context docBase="ISOUR" path="/ISOUR" reloadable="true" source="org.eclipse.jst.jee.server:ISOUR"/></Host>
+<!-- 보안상에 이유로 웹브라우저에서 경로 입력으로 프로젝트 밖에 외부 폴더로는 접근이 안되도록 기본 설정이 되어있지만, URL 접근 경로와 외부 저장 폴더를 맵핑하면 외부 폴더에 저장된 파일에 접근 가능하다.-->
+      <Context docBase="ISOUR" path="/ISOUR" reloadable="true" source="org.eclipse.jst.jee.server:ISOUR"/>
+      <Context docBase="D:\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING" path="/ISOUR/MemberInfo/file" reloadable="true"/>
+      </Host>
     </Engine>
   </Service>
 </Server>

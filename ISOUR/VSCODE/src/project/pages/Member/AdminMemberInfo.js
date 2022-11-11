@@ -78,61 +78,52 @@ const AdminMemberInfo = () => {
   }
 
   return (
-    <div className='Login-Container'>
-      <div className='admin-outbox'>
-        <div className='name'>회원 정보</div>
-        <div className='Styled'>
-          <table className='admin-table'>
-            {/* F:\KH\TOTAL-1\ISOUR_HJ\ISOUR\Eclipse\src\main\webapp\UPLOADIMG\admin.jpg */}
-            {/* <img src={ require('F:/KH/TOTAL-1/ISOUR_HJ/ISOUR/Eclipse/src/main/webapp/UPLOADIMG/admin.jpg').default } width='80px' height='100px'/> */}
-            {/* <img src={aaa} width='80px' height='100px' /> */}
-            <tr className='admin-tr1'>
-              <th>사진(IMAGE)</th>
-              <th>이름(NAME)</th>
-              <th className='admin-tbid'>아이디(ID)</th>
-              <th>비밀번호(PASSWORD)</th>
-              <th>생년월일(BIRTH)</th>
-              <th>나이(AGE)</th>
-              <th>성별(GENDER)</th>
-              <th>시도(REGION1)</th>
-              <th>시/구/군(REGION2)</th>
-              <th className='admin-tbmbti'>MBTI</th>
-            </tr>
-            {memberInfo && memberInfo.map(member => (  //  npm i babel-eslint -D  설치
-              <tr key={member.name}>
-
-                {/* <td><p style={{background={member.fileName}}} /></td> */}
-                {/* <td><p style={{background: 'url({member.fileName})'}} width='80px' height='100px'/></td> */}
-                {/* <td><img style={{background: 'url({member.fileName})'}} width='80px' height='100px'/></td> */}
-                {/* <td><img src='/MemberInfo/file/admin.jpg' width='80px' height='100px'/></td> */}
-                {/* <td><img src={ require({member.fileName}).default } width='80px' height='100px' alt='엑박'/></td> */}
-                {/* <td>{member.fileName}</td> */}
-                {/* <td><div style={{backgroundImage: 'url("{member.fileName}")', width:'80px', height:'100px' }} /></td> */}
-                <td>
-                  {member.fileName ?
-                    <img src={`${DOMAIN}` + `${member.fileName}`} width='80px' height='100px' />
-                    : <img src={noImage} width='80px' height='100px' />
-                  }
-                </td>
-                <td>{member.name}</td>
-                <td>{member.id}</td>
-                <td>{member.pwd}</td>
-                <td>{member.birth}</td>
-                <td>{member.age}</td>
-                <td>{member.gender}</td>
-                <td>{member.region1}</td>
-                <td>{member.region2}</td>
-                <td>{member.mbti}</td>
+    <div className='Container' >
+      <div className='AdminMemberInfo-Container'>
+        <div className='Admin-outbox'>
+          <div className='Admin-name'>회원 정보</div>
+          <div className='Admin-Styled'>
+            <table className='Admin-table'>
+              <tr className='Admin-tr1'>
+                <th>사진(IMAGE)</th>
+                <th>이름(NAME)</th>
+                <th className='Admin-tbid'>아이디(ID)</th>
+                <th>비밀번호(PASSWORD)</th>
+                <th>생년월일(BIRTH)</th>
+                <th>나이(AGE)</th>
+                <th>성별(GENDER)</th>
+                <th>시도(REGION1)</th>
+                <th>시/구/군(REGION2)</th>
+                <th className='Admin-tbmbti'>MBTI</th>
               </tr>
-            ))}
-          </table>
+              {memberInfo && memberInfo.map(member => (  //  npm i babel-eslint -D  설치(뭔지 모르겠음.. 일단 패스)
+                <tr key={member.name}>
+                  <td>
+                    {member.fileName ?
+                      <img src={`${DOMAIN}` + `${member.fileName}`} width='80px' height='100px' />
+                      : <img src={noImage} width='80px' height='100px' />
+                    }
+                  </td>
+                  <td>{member.name}</td>
+                  <td>{member.id}</td>
+                  <td>{member.pwd}</td>
+                  <td>{member.birth}</td>
+                  <td>{member.age}</td>
+                  <td>{member.gender}</td>
+                  <td>{member.region1}</td>
+                  <td>{member.region2}</td>
+                  <td>{member.mbti}</td>
+                </tr>
+              ))}
+            </table>
+          </div>
+          <Link to="/" className="Admin-link-box">
+            <img className="Admin-link-img" src={imgHome} alt="HOME" />
+            <span>HOME</span>
+          </Link>
         </div>
-        <Link to="/" className="admin-link-box">
-          <img className="link-img" src={imgHome} alt="HOME" />
-          <span>HOME</span>
-        </Link>
       </div>
     </div>
-  );
+    );
 }
 export default AdminMemberInfo;
