@@ -8,8 +8,6 @@ import '../../CSS/Style_Login.css';
 import './MessageList.css';
 import SignUpModal from './SignUpModal'
 
-// import 'bootstrap/dist/css/bootstrap.min.css';
-
 const MessageList = () => {
   const localId = window.localStorage.getItem("userId");
 
@@ -20,12 +18,7 @@ const MessageList = () => {
   const [content, setContent] = useState("");
 
   let inputMessage;
-  // 테스트중
-
-  // const namesList = window.localStorage.getItem("userId");
-  // const [namesList , setNamesList ] = useState([]);
-
-
+  
   let receiverId = 'dleldi';
 
     const Styled = styled.div`
@@ -46,10 +39,6 @@ const MessageList = () => {
     height: 500px;
     `;
 
-
-
-
-
   useEffect(() => {
     const messageData = async () => {
       setLoading(true);
@@ -57,12 +46,8 @@ const MessageList = () => {
         const response = await TeamAPI.messageStorage(localId);
         console.log("응답 메시지 : " + response);
         setMessageList(response.data);
-        // console.log("response.data : " + response.data);
-
+        
         window.localStorage.setItem("namesList", response.data);
-
-    
-
 
       } catch (e) {
         console.log(e);
@@ -74,12 +59,6 @@ const MessageList = () => {
 
   // 여기부터는 모달 테스트
   const [signUpModalOn, setSignUpModalOn] = useState(false);
-
-  // const testArray = messageList.map(message => message);
-  // console.log("testArray : " + testArray);
-  // window.localStorage.setItem("userName", memberInfo.name);
-
-  // 여기까지 모달 테스트
 
   const onClickSendMessage = async () => {
     console.log("쪽지 보내기 눌렀어요.");
@@ -111,18 +90,15 @@ const MessageList = () => {
   }
 
   const onClickDelete = () => {
-    let arryaids = [];
     let boxs = document.getElementsByClassName("checkboxs");
     console.log("boxs : " + boxs);
     console.log("boxs.length : " + boxs.length);
 
-    // let selectedMessage = [];
     for (let i = 0; i < boxs.length; i++) {
       var chkbox = boxs[i].rows;
       console.log("chkbox : " + chkbox);
 
       if (chkbox) boxs.deleteRow(i);
-      // if(boxs[i] == true) 
     }
   }
 
