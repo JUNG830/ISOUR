@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import TeamAPI from '../../api/TeamAPI';
+import TeamAPI, { TEAM_DOMAIN } from '../../api/TeamAPI';
 import nowGo from '../../images/short_cut.png'
 import noImage from '../../images/no_image.gif';
 import { Link } from 'react-router-dom';
@@ -12,8 +12,6 @@ const MyPage = () => {
   const isLogin = window.localStorage.getItem("isLogin");
   if(isLogin === "FALSE") window.location.replace("/login");
   // ▲ 로그인 안 되어 있으면 로그인 페이지로
-
-  const DOMAIN = 'http://localhost:8111/ISOUR/MemberInfo/file/';
 
   const localId = window.localStorage.getItem("userId");
   const localPw = window.localStorage.getItem("userPw");
@@ -96,7 +94,7 @@ const MyPage = () => {
                 <tr>
                   <td colSpan="2" align='center' >
                     { member.fileName ?  
-                      <img src={`${DOMAIN}` + `${member.fileName}`} style={{borderRadius:'70%', width: '200px'}}/>
+                      <img src={ TEAM_DOMAIN + "MemberInfo/file/" + `${member.fileName}`} style={{borderRadius:'70%', width: '200px'}}/>
                       : <img src={noImage} style={{borderRadius:'70%', width: '200px'}} />
                     }</td>
                 </tr>

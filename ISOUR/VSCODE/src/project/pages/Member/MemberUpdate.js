@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import TeamAPI from '../../api/TeamAPI';
+import TeamAPI, { TEAM_DOMAIN } from '../../api/TeamAPI';
 import hangjungdong from "../../hangjungdong";
 import '../../CSS/MyPage.css'
 import { Link } from 'react-router-dom';
 import noImage from '../../images/no_image.gif'
 import axios from 'axios';
+
 
 
 const MemberListBlock = styled.div`
@@ -34,9 +35,7 @@ function MemberUpdate() {
     const localPw = window.localStorage.getItem("userPw");
     const isLogin = window.localStorage.getItem("isLogin");
     if(isLogin === "FALSE") window.location.replace("/");
-    const DOMAIN = 'http://localhost:8111/ISOUR/MemberInfo/file/';
-
-
+  
   // 이름, 아이디, 비밀번호, 비밀번호 확인, 생년월일, 성별, 주소, 회원가입
   const [memberInfo, setMemberInfo] = useState([]); // 현재 로그인 되어 있는 회원의 정보 저장용
 
@@ -61,7 +60,7 @@ function MemberUpdate() {
 
   // formData 객체는 key, value 형식으로 되어 있는 객체이다.
   // formData.append( key, value );
-  const handleClick = () => {
+  const handleClick = async () => {
     const formData = new FormData();
     formData.append('uploadImage', files);
     formData.append('Id', localId);
@@ -70,15 +69,21 @@ function MemberUpdate() {
       console.log(value);
     }
 
-    const config = {
-      Header: {
-        'content-type': 'multipart/form-data',
-      },
-    };
+    // const config = {
+    //   Header: {
+    //     'content-type': 'multipart/form-data',
+    //   },
+    // };
     // https://bewci01vce.execute-api.ap-northeast-2.amazonaws.com/prod/isour-file-upload
-    axios.post('http://localhost:8111/ISOUR/UploadService', formData, config).then(() => { // API Gateway URL 입력
-      console.log(localId);
-    });
+    // axios.post('http://localhost:8111/ISOUR/UploadService', formData, config).then(() => { // API Gateway URL 입력
+    
+    try {
+      const UploadService = await TeamAPI.UploadService(formData)
+        console.log("통신 완 : " + localId);
+        console.log(UploadService.data);
+    } catch (e) {
+      console.log(e);
+    }
 };
 
   useEffect(() => {  
@@ -142,7 +147,8 @@ const onChangeName = e => {
         console.log("region1 : " + region1);
         console.log("region2 : " + region2);
         console.log("가입 완!!");
-        window.location.replace("/mypage");
+        
+        // window.location.replace("/mypage");
     // } else {
     //   console.log("잘못 입력한 값이 있거나 입력되지 않은 값이 있어요.");
     //   alert('입력된 값을 확인하세요.');
@@ -176,7 +182,7 @@ const [imageSrc, setImageSrc] = useState('');
   
   return (
     <div className='Container'>
-      <div className='MemberUpdate-Container'>
+      <div className='MyPage-Container'>
         {memberInfo.map(member => (
             <div key={member.id}>
           <table className='MemberUpdate-table'>
@@ -192,6 +198,8 @@ const [imageSrc, setImageSrc] = useState('');
               <tr>
                 <td colSpan="2" align='center' >
 
+                    {/* 미리보기 */}
+
                   {/* 파일이 추가되었는지를 먼저 확인 -> DB 데이터가 있는지를 먼저 확인할 경우 파일을 변경했을 때를 인식하지 못함.  */}
                     { isFileUP ?  
                     //  추가한 파일 이 있는 경우 해당 파일은 미리보기로 보여줌.
@@ -199,7 +207,7 @@ const [imageSrc, setImageSrc] = useState('');
                       //  추가한 파일이 없는 경우 DB에 저장된 파일이 있는지 확인
                       : member.fileName ?
                       // DB 에 저장된 데이터가 있다면 해당 데이터를 미리보기에 보여줌.
-                            <img src={`${DOMAIN}` + `${member.fileName}`} style={{borderRadius:'70%', width: '200px'}} />
+                            <img src={`${TEAM_DOMAIN}` + "MemberInfo/file/" + `${member.fileName}`} style={{borderRadius:'70%', width: '200px'}} />
                       // DB에 저장된 데이터가 없다면 기본 파일을 보여줌.
                             : <img src={noImage} style={{borderRadius:'70%', width: '200px'}} /> 
                     } 
@@ -207,7 +215,7 @@ const [imageSrc, setImageSrc] = useState('');
               </tr>           
               <tr>
                 <td colSpan="2" align='center' >
-                  <form className='MemberUpdate-profileImg-label' >
+                  <form className='MemberUpdate-profileImg-label'>
                     <label className='MemberUpdate-profileImg-label'>
                       <input className="MemberUpdate-profileImg-input" type='file' display='none' id='image' accept='image/*' onChange={(e) => {encodeFileToBase64(e.target.files[0])}} />
                       프로필사진 추가

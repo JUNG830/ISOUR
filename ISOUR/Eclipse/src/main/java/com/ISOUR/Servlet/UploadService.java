@@ -31,7 +31,7 @@ import com.ISOUR.DAO.MemberDAO;
 					maxRequestSize=1024*1024*100)   // 100 MB
 public class UploadService extends HttpServlet{
 
-	/**
+	/** 
 	 * 
 	 */
 	private static final long serialVersionUID = -4793303100936264213L;
@@ -39,10 +39,13 @@ public class UploadService extends HttpServlet{
 	private static final String CHARSET = "utf-8";
 	private static final String uploadFilePath = "\\UPLOADING";
 	
-	// 학원 버전 경로
-//	private static final String UPLOAD_DIR = "D:\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp";
+	// HJ 학원 버전 경로
+//	private static final String UPLOAD_DIR = "D:\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
 	
-	// 집 버전
+	// 우 ISOUR 학원 버전
+	private static final String UPLOAD_DIR = "D:\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
+	
+	// 집 버전 
 //	private static final String UPLOAD_DIR = "F:\\KH\\TOTAL-1\\ISOUR_HJ\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
 	
 	// 우 노트북
@@ -50,7 +53,7 @@ public class UploadService extends HttpServlet{
 	
 	
 	// 조혜경 학원 데스크탑
-	private static final String UPLOAD_DIR = "D:\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
+//	private static final String UPLOAD_DIR = "D:\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
 	
 	// 규한님 학원 데스크탑
 //	private static final String UPLOAD_DIR = "D:\\혜정님 수정파일\\ISOUR\\ISOUR\\Eclipse\\src\\main\\webapp\\UPLOADING";
@@ -153,12 +156,12 @@ public class UploadService extends HttpServlet{
     		boolean isRegister = dao.FlieUpload(filePath, fileName, loginId);
 
     		System.out.println("제발제발제발제발 여기까지 오면 집에 간다....");
+    		System.out.println(isRegister);
     		
-    		
-    		JSONObject resJson = new JSONObject();
-    		if(isRegister) resJson.put("result", "OK");  // result = Key / OK = value
-    		else resJson.put("result", "NOK");
-    		out.print(resJson);
+//    		JSONObject resJson = new JSONObject();
+//    		if(isRegister) resJson.put("result", "OK");  // result = Key / OK = value
+//    		else resJson.put("result", "NOK");
+//    		out.print(resJson);
             
             out.println("<h1>업로드 완료</h1>");
         } else {

@@ -1,12 +1,14 @@
 import axios from "axios";
 
 
-const HEADER = 'application/json';
-const TEAM_DOMAIN = "http://localhost:8111/ISOUR/";
 
+const HEADER = 'application/json';
+const config = 'multipart/form-data';
+export const TEAM_DOMAIN = "http://localhost:8111/ISOUR/";
 
 
 const TeamAPI = {
+
   // 로그인 기능
   userLogin: async function(id, pw) {
     const loginObj = {
@@ -105,24 +107,20 @@ const TeamAPI = {
       return await axios.post(TEAM_DOMAIN + "MessageServlet", messageObj, HEADER);
     },
 
-  
-
   // 이미지 파일 업로드
   UploadService: async function(formData) {
-    const regCheck = {
-      formData: formData
-    };
-    const config = {
-      Header: {
-        'content-type': 'multipart/form-data',
-      },
-    };
 
-    return await axios.post(TEAM_DOMAIN + "UploadService", regCheck, config, HEADER);
+    console.log("여기 OK??");
+    for(let value of formData.values()) {
+      console.log(value);
+    }
+    return await axios.post(TEAM_DOMAIN + "UploadService", formData)
+    .then((response) => {
+      const res = JSON.stringify(response)
+      console.log(res);
+    });
   },
   
-
-
 }
 
 export default TeamAPI;

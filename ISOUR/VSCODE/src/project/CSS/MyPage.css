@@ -11,7 +11,7 @@
 }
 
 /* 회원정보 수정 프로필 사진 스타일  */
-.profileImg-label{
+.MemberUpdate-profileImg-label{
     margin: 5px 0 20px 0;
     font-weight: bold;
     font-size: 15px;
@@ -21,7 +21,7 @@
   }
   
   /* 회원정보 수정 프로필 사진 input태그 */
-  .profileImg-input {
+  .MemberUpdate-profileImg-input {
     display: none;
     cursor: pointer;
   }
@@ -49,35 +49,35 @@
   }
   
   /* 회원 정보 수정 테이블 */
-  .memberUpdate-table {
+  .MemberUpdate-table {
     width: 600px;
     background-color: #fff;
     border-collapse: collapse;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   }
-  .memberUpdate-table h1 {
+  .MemberUpdate-table h1 {
     font-size: 20px;
   }
   
-  .memberUpdate-table th {
+  .MemberUpdate-table th {
     display: flex;
     justify-content: right;
     padding-right: 100px;
     margin: 2px 0;
   }
   
-  .memberUpdate-table td {
+  .MemberUpdate-table td {
     justify-content: left;
     padding-left: 20px;
     margin: 2px 0;
   }
   
-  .memberUpdate-btn {
+  .MemberUpdate-btn {
     display: flex;
     padding: 30px;
   }
   
-  .memberUpdate-btn button {
+  .MemberUpdate-btn button {
     background-color: #29335c;
     color: white;
     font-size: 15px;
