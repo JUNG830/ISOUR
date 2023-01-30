@@ -46,8 +46,6 @@ public class MemberDropServlet extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 		boolean isRegister = dao.dropCheck(getId, getPwd);
 		
-		System.out.println("여기여기여기여기 : " + isRegister);
-		
 		PrintWriter out = response.getWriter();
 		JSONObject resJson = new JSONObject();
 		if(isRegister) resJson.put("result", "OK");  // result = Key / OK = value
